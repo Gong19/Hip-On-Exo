@@ -1,0 +1,11 @@
+--- a/hipexo_emg_core.py
++++ b/hipexo_emg_core.py
+@@ -22,7 +22,7 @@
+             raise ValueError('Exactly seven logical channel slots are required')
+         self.channels = channels
+         self.fingerprint = {'source': source_kind, 'channels': [
+-            {k: ch.get(k) for k in ('sid', 'mode', 'sample_rate', 'present')}
++            {k: ch.get(k) for k in ('sid', 'mode', 'sample_rate', 'present', 'sdk_unit', 'scale_to_v', 'value_units')}
+             for ch in channels]}
+         self.b, self.a = signal.bessel(2, 5, fs=RATE, btype='low')
+         self.baseline = np.zeros(7)

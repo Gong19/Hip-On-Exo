@@ -1,0 +1,16 @@
+{
+  "software_unittest_count": 23,
+  "software_failures": 0,
+  "software_errors": 0,
+  "duration_s": 8.539,
+  "additional_calibration_checks": {
+    "changed_units_rejected": true,
+    "matching_units_accepted": true
+  },
+  "gui_smoke": "SIMULATED passed and screenshot visually inspected",
+  "real_acquisition_after_fixes": false,
+  "ubuntu_patches_deployed": false,
+  "fixed_token_config_modified": false,
+  "original_raw_record_unchanged": true,
+  "source_version": "20261003.4"
+}

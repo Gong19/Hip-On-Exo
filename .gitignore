@@ -216,3 +216,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Local EMG credentials and experimental recordings
+bridge_private_config.json
+emg_config.local.json
+**/records/
+**/validation/real-*/
+*.jsonl
+*.csv

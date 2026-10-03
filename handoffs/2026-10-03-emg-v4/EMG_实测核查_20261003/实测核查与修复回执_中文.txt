@@ -1,0 +1,111 @@
+真实双机 EMG 十秒测试：Windows 独立核查与修复回执
+日期：2026-10-03
+run_id：72d08d118d9b45aea3ad6a44b6f362b0
+采集时 Windows 版本：20261003.3；本轮修改后的源码版本：20261003.4
+
+结论
+
+真实跨电脑传输已经成立，且本次 Windows 已记录的全部原始样本均到达 Ubuntu；正常停止协议、完整派生 CSV 和幅值单位仍没有通过验收。不要把本次标成“全部 PASS”，也不要因 STOP 超时丢弃原始数据。
+
+一、原始数据：独立逐包和逐点比较通过
+
+实际在线通道为 slot 1、ED、SID 57569，模式为厂商 RMS、100 ms 窗口、148.148148 Hz。不是前一次握手的 FCU / SID57589 / 2148 Hz 配置。
+
+Windows 文件：emg_f1314c1c11b747478815b11db7bd9bda.jsonl
+Ubuntu 文件：emg_remote_601dbb80285e4754b6d85cfc201e2060.jsonl
+
+独立复核：
+• 双端 264 个 DATA 包，seq 0–263，消息内容完全相同。
+• 322 次 Windows raw_poll 中取出的时间/数值，展平后与 Ubuntu 的 1496 个样本逐一相同。
+• 设备时间为 0–10.09125 秒，严格递增，间隔 0.00675 秒，与 SDK 148.148148 Hz 一致。
+• Windows 最后 stop 记录：normal_stop、recording_complete=true、last_seq=263、该槽 1496 点、I/O 队列峰值 4。
+• 六个缺失槽在原始 DATA 中均为 0 样本，没有代造它们的原始测量。
+
+这支持“所有已被 Windows SDK Poll 取出并记录的样本均到达 Ubuntu，包括已记录尾包”。它不证明传感器无线链路在进入 SDK 前绝无损失，也不替代成功 STOP_ACK。核对器的 stop_tail=PASS 指上述离线文件比较；receiver_stop_ack_present=false 仍必须保留。
+
+二、停止：完成记录存在，但成功确认没有到 Ubuntu
+
+最后数据发送的 Windows wall_ns：1791046422770542500。
+Windows stop 记录的 wall_ns：1791046425880566800。
+两者相差 3110.0243 ms。客户端默认 STOP 等待 3 秒，与这次超时现象相符。
+
+但是，旧日志没有 STOP 网络收取、SDK Stop 开始/结束、文件 close 返回、ACK send 返回的分别打点。因此不能把 3.110 秒直接称为“实测 SDK Stop 用时”，也不能断言超时唯一由 SDK 引起。Windows 的 stop 行写在 flush/fsync/close 之前，单凭这行不能给出文件关闭的精确时刻。对端随后重新 HELLO/PING 得到 ready=true，支持状态恢复，但不等于旧请求收到确认。
+
+Windows 20261003.4 新增：
+• STOP 请求收取时刻与 actor 开始处理时刻。
+• SDK Stop 前后 wall/mono、实际调用耗时。
+• 排空尾包返回时刻、最终计数。
+• 正常停止后同名 .stop_receipt.json：raw_file_closed、ack_send_begin、ack_send_returned、socket_send_success。
+• 文件关闭完成后才排队发送成功 STOP_ACK，未提前虚报成功。
+
+socket_send_success 只表示本端 socket 写入结果，不代表 Ubuntu 应用已经收到。下次需同时核对 Ubuntu 的 stop 事件。
+
+三、CSV：确实只覆盖约 7.364 秒
+
+独立顺序读取 63,358,353 字节 CSV，七个逻辑流各有 7365 个唯一 sample_id，source_time_s 均为 0–7.364 秒。19 个字段按长表逐行记录，共 979545 条数据行。七流都有网格记录不代表七只传感器在线，应结合 valid 字段；真实原始数据只有 ED 一路。
+
+原始源时间已到 10.09125 秒，故派生 CSV 不完整。它不能用于声称完整十秒处理结果。原 JSONL、CSV 均未覆盖或补写；后续可在单位确认后按同一处理算法重新离线生成新文件，明确标识“重建”，保留旧 CSV。
+
+检视已交接的 Ubuntu worker：stop() 返回后才 drain_pending 和 processor.drain(force=True)，异常会跳过正常排空分支。这与回执和 CSV 缺尾现象一致。给 Ubuntu 的剩余要求：在异常路径保留已收到数据，并把原始完整性、派生完整性、STOP_ACK 结果分别记录；时间映射无效时保留原始证据，不能把无效映射继续发布成正常数据。不要把 ERROR 改成 READY 来掩盖失败。
+
+四、延迟：起始几毫秒 RTT 不代表实际显示链路延迟
+
+本 run 的起始探测：
+Windows−Ubuntu 偏差：+663.531404 ms。
+RTT 最小 / 中位 / 最大：4.334533 / 5.644485 / 47.319857 ms。
+RTT/2 单向估计：2.1672665 ms（对称路径假设）。
+START 命令到 ACK：259.542507 ms。
+首包发送到 Ubuntu 处理完整包估计：5.841345 ms。
+
+对 264 包逐一复算并汇总同一 delivery_timing 指标：
+最小 2.948922 ms；中位 631.024134 ms；P95 2232.603544 ms；最大 2696.960258 ms。P95 使用排序后 floor(0.95*(N−1)) 索引。没有负估计。
+
+此指标是应用层完整消息被处理的时刻，包含网络、socket 缓存、调度、解析和接收端读取不及时；不是网卡接收时刻，不是 Delsys 采样到显示的总延迟。Windows send 打点在应用 I/O 出队后，因此不包含出队前等待。
+
+seq200 对应源时间 7.76925 秒，却在停止请求附近才被处理；停止等待期间多包快速被取出。加上 CSV 在同一采集处理线程中产生大量记录，这是接收/处理积压的重要线索，但现有日志不能把网络排队、UI/处理开销和磁盘写入各自定量分离。不能把 2.70 秒全部归咎于 eduroam，也不能据此判定需要换成 UDP。
+
+给 Ubuntu 的后续性能工作：让接收及原始记录不被重采样、绘图、长表 CSV 阻塞；测量读取、处理和写盘各阶段耗时及队列长度；有界队列满时显式报错，不静默丢帧。保留完整记录的同时可以降低界面刷新频率；源采样时刻映射与展示刷新分开。
+
+五、幅值：旧版确有未经验证地把 SDK 值当 V 的问题
+
+旧版桥接直接把 PollYTData.Item2 填入 values_v，没有读取 ChannelTrigno.Unit；日志的 V 标签不能作为单位验证证据。本次原 SDK 数值最大 0.21159871793246918，被按 V 解读后约 211.599 mV，与模式标示 ±11 mV 存在明显矛盾。该问题不能靠猜测倍率处理。
+
+官方 Delsys 示例文档明确提供 ChannelTrigno.Unit（示例 Millivolts），可用 str() 读取。已据此修改 Windows：扫描时保存 sdk_unit、scale_to_v、value_units 和单位依据；已知 Volts/Millivolts/Microvolts 分别乘 1、0.001、0.000001 得到传输的 V。未知单位拒绝开始，避免继续贴错单位标签。raw_poll 额外保留未换算 sdk_values，便于追溯。界面新增“SDK 单位 → V”列。
+
+目前没有重新连接 SDK 读取本次硬件的 Unit，旧日志也未保存它。因此不能回溯确认这批旧值就是 mV；它们保持“SDK value / unit unverified”。若下一次同一模式报告 Millivolts，则例值 0.2115987 应换为约 0.0002115987 V；此例是条件说明，不是已给旧数据执行的修正。硬件幅值标定仍未完成。
+
+单位尺度修正后，旧 baseline/MVC 不应自动复用。随包提供的 Ubuntu core 最小修改将 sdk_unit、scale_to_v、value_units 加入 calibration fingerprint，使旧单位标定被拒绝，避免无声沿用。
+
+六、已完成修改和测试范围
+
+Windows 本机源码已更新为 20261003.4；固定令牌配置未修改。没有启动真实采集、切换传感器模式、安装 SDK、改固件或改动旧记录。用户已表示自行开窗口，本轮未替用户打开真实界面。
+
+Ubuntu 补丁在 ubuntu_patch/，未连接远端部署：
+• hipexo_emg_remote.py：STOP 默认等待 20 秒（临时可配置预算，不是设备时长上界）；记录 stop_requested / stop_failed；超时后关闭旧 socket，避免再次发送 STOP 与迟到 ACK 混淆。其余 RPC 保持原预算。
+• hipexo_emg_core.py：标定身份包含单位和倍率。
+• base_sha256.json：被修改的原文件哈希。若 Ubuntu 当前文件已变化，请仅合入相应函数差异，不用旧整套工程覆盖当前工作。
+
+23 项测试通过：原 20 项，加 SDK 单位换算/保留原始值、模拟 SDK Stop 3.3 秒仍成功、短超时关闭连接且不重复 STOP。另独立验证单位变化拒绝旧标定、同单位标定可以加载。GUI 模拟渲染、待命和退出通过。
+
+这些是软件验证，新版真实 SDK Unit 读取、真实 Stop 分段耗时、补丁部署后的双机成功 STOP、完整派生 CSV 与十分钟稳定性仍需重测。没有把待验证项目写成已修复验收。
+
+七、下一次测试顺序
+
+1. 先把本包给 Ubuntu 端，合入 STOP/标定修改，并处理 CSV 异常排空和接收积压；当前程序/配置先备份。
+2. Windows 正常关闭旧窗口，用户自行用原启动器打开，确认版本 20261003.4，固定令牌保持原值。
+3. 扫描并记录同一 SID 的 SDK 单位、倍率、模式、采样率，进入 ARMED。
+4. Ubuntu 重连，重新 Sync & Start，先做短时真实采集。停止后等待 STOP_ACK，不提前关窗口。
+5. 返回同一 run 的 Ubuntu 原始/延迟/CSV、Windows 原始及新增 stop_receipt，确认单位与尾包后再延长到十分钟。
+
+八、参考与证据（访问/核对日期：2026-10-03）
+
+R1. 用户提供 emg_test_data_10.2-20261003T170559Z-1-001.zip，SHA-256：4df24cfa9cfc9fc71a10c3f7e5558ccc32b8cf0b674f7ac6f1b32938a0aaedd5。包内回执、test_report、gui_result、interface.log、同一 run JSONL/时间报告/CSV。
+R2. 本机 Windows 原始文件 emg_f1314c1c11b747478815b11db7bd9bda.jsonl；具体输入哈希、逐点比较和延迟统计见 双端原始记录核对.json。原始文件仅本机保留，公开 GitHub 版本不含原始测量。
+R3. Delsys 官方 Example-Applications，Python/README.md：ChannelTrigno.Unit、PollYTData、Stop 方法说明。https://github.com/delsys-inc/Example-Applications/blob/main/Python/README.md ；本轮实际读取原文：https://raw.githubusercontent.com/delsys-inc/Example-Applications/main/Python/README.md 。该文档支持读取通道单位及停止状态，不给出本次设备内部延迟、RMS 窗口时刻定义或本次 Stop 最大耗时。
+R4. 官方 API 文档入口 https://data.delsys.com/DelsysServicePortal/api/web-api/index.html ：本轮打开返回 502，未把不可访问内容作为证据。
+R5. 用户此前提供的 Ubuntu 更新包：hipexo_emg_remote.py 的 _rpc/stop/_queue_data，hipexo_emg.py 的 worker stop 与错误处理，hipexo_emg_core.py 的 calibration fingerprint；Windows bridge_sources.py / bridge_service.py。对代码行为的推断已与实际文件证据区分。
+
+本轮搜索结果中的第三方产品页、非相关 AeroPy 库和泛化 EMG 文献未用于确定本设备的单位。没有把文档里的示例 Millivolts 当作本次设备实际查询结果。
+
+
+公开发布说明：这份 GitHub 快照只含工作回执、汇总证据和代码。原始生理波形、CSV、私有配置、令牌、许可证和 DLL 留在本机。报告所提原始证据文件名用于核对，不代表其已公开上传。Windows 源码中的个人路径已替换为占位符，现有本机安装未因此改动。

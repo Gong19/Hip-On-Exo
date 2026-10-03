@@ -1,0 +1,89 @@
+{
+  "streams": {
+    "emg_0": {
+      "rows": 139935,
+      "source_s_min": 0.0,
+      "source_s_max": 7.364,
+      "wall_min": 1791046412066.7468,
+      "wall_max": 1791046419430.7468,
+      "unique_sample_ids": 7365,
+      "wall_span_s": 7.364
+    },
+    "emg_1": {
+      "rows": 139935,
+      "source_s_min": 0.0,
+      "source_s_max": 7.364,
+      "wall_min": 1791046412066.7468,
+      "wall_max": 1791046419430.7468,
+      "unique_sample_ids": 7365,
+      "wall_span_s": 7.364
+    },
+    "emg_2": {
+      "rows": 139935,
+      "source_s_min": 0.0,
+      "source_s_max": 7.364,
+      "wall_min": 1791046412066.7468,
+      "wall_max": 1791046419430.7468,
+      "unique_sample_ids": 7365,
+      "wall_span_s": 7.364
+    },
+    "emg_3": {
+      "rows": 139935,
+      "source_s_min": 0.0,
+      "source_s_max": 7.364,
+      "wall_min": 1791046412066.7468,
+      "wall_max": 1791046419430.7468,
+      "unique_sample_ids": 7365,
+      "wall_span_s": 7.364
+    },
+    "emg_4": {
+      "rows": 139935,
+      "source_s_min": 0.0,
+      "source_s_max": 7.364,
+      "wall_min": 1791046412066.7468,
+      "wall_max": 1791046419430.7468,
+      "unique_sample_ids": 7365,
+      "wall_span_s": 7.364
+    },
+    "emg_5": {
+      "rows": 139935,
+      "source_s_min": 0.0,
+      "source_s_max": 7.364,
+      "wall_min": 1791046412066.7468,
+      "wall_max": 1791046419430.7468,
+      "unique_sample_ids": 7365,
+      "wall_span_s": 7.364
+    },
+    "emg_6": {
+      "rows": 139935,
+      "source_s_min": 0.0,
+      "source_s_max": 7.364,
+      "wall_min": 1791046412066.7468,
+      "wall_max": 1791046419430.7468,
+      "unique_sample_ids": 7365,
+      "wall_span_s": 7.364
+    }
+  },
+  "fields": {
+    "raw_v": 51555,
+    "uncalibrated_v": 51555,
+    "envelope_v": 51555,
+    "mvc_ratio": 51555,
+    "baseline_v": 51555,
+    "mvc_v": 51555,
+    "valid": 51555,
+    "source_time_s": 51555,
+    "simulated": 51555,
+    "sensor_id": 51555,
+    "session_id": 51555,
+    "is_rms": 51555,
+    "windows_wall_ns_est": 51555,
+    "sync_offset_ns": 51555,
+    "sync_rtt_ns": 51555,
+    "sync_id": 51555,
+    "remote_run_id": 51555,
+    "remote_simulated": 51555,
+    "clock_quality": 51555
+  },
+  "file_bytes": 63358353
+}

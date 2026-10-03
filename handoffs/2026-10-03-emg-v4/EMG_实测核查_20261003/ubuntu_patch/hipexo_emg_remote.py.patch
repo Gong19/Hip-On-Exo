@@ -1,0 +1,31 @@
+--- a/hipexo_emg_remote.py
++++ b/hipexo_emg_remote.py
+@@ -407,9 +407,25 @@
+ 
+     def stop(self):
+         if self.started and self.sock:
+-            reply,_=self._rpc('stop',cancellable=False,run_id=self.run_id)
+-            if reply.get('run_id')!=self.run_id or reply.get('last_seq')!=self.expected_seq-1:
+-                raise ValueError('Windows STOP count does not match received packets')
++            timeout=float(self.config.get('remote_stop_timeout_s',20.))
++            if not math.isfinite(timeout) or not 0.1<=timeout<=120:
++                raise ValueError('remote_stop_timeout_s must be between 0.1 and 120 seconds')
++            self._log('stop_requested',run_id=self.run_id,timeout_s=timeout,
++                      expected_next_seq=self.expected_seq)
++            if self.journal:self.journal.flush()
++            try:
++                reply,_=self._rpc('stop',timeout=timeout,cancellable=False,run_id=self.run_id)
++                if reply.get('run_id')!=self.run_id or reply.get('last_seq')!=self.expected_seq-1:
++                    raise ValueError('Windows STOP count does not match received packets')
++            except Exception as exc:
++                # Do not issue a second STOP on a stream with a possibly late ACK.
++                self._log('stop_failed',run_id=self.run_id,error=str(exc),
++                          received_last_seq=self.expected_seq-1)
++                if self.journal:self.journal.flush()
++                self.sock.close();self.sock=None;self.started=False
++                self.status.update(connected=False,streaming=False,stop_ack_received=False)
++                raise
++            self.status['stop_ack_received']=True
+             self._log('stop',reply=reply)
+             if self.session:
+                 self.session.event('emg_stop',run_id=self.run_id,reply=reply,

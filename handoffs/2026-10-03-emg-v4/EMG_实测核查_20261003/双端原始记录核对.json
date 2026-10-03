@@ -1,0 +1,131 @@
+{
+  "packet_equality": "PASS",
+  "raw_poll_counts": "PASS",
+  "stop_tail": "PASS",
+  "run_id": "72d08d118d9b45aea3ad6a44b6f362b0",
+  "packets": 264,
+  "channel_stats": [
+    {
+      "slot": 0,
+      "sid": 57614,
+      "present": false,
+      "samples": 0,
+      "sdk_rate_hz": 1000.0,
+      "observed_time_axis_rate_hz": null,
+      "first_device_s": null,
+      "last_device_s": null,
+      "min_step_s": null,
+      "max_step_s": null
+    },
+    {
+      "slot": 1,
+      "sid": 57569,
+      "present": true,
+      "samples": 1496,
+      "sdk_rate_hz": 148.14814814814815,
+      "observed_time_axis_rate_hz": 148.14814814814815,
+      "first_device_s": 0.0,
+      "last_device_s": 10.09125,
+      "min_step_s": 0.0067499999999984794,
+      "max_step_s": 0.006750000000000256
+    },
+    {
+      "slot": 2,
+      "sid": 57566,
+      "present": false,
+      "samples": 0,
+      "sdk_rate_hz": 1000.0,
+      "observed_time_axis_rate_hz": null,
+      "first_device_s": null,
+      "last_device_s": null,
+      "min_step_s": null,
+      "max_step_s": null
+    },
+    {
+      "slot": 3,
+      "sid": 57589,
+      "present": false,
+      "samples": 0,
+      "sdk_rate_hz": 1000.0,
+      "observed_time_axis_rate_hz": null,
+      "first_device_s": null,
+      "last_device_s": null,
+      "min_step_s": null,
+      "max_step_s": null
+    },
+    {
+      "slot": 4,
+      "sid": 57586,
+      "present": false,
+      "samples": 0,
+      "sdk_rate_hz": 1000.0,
+      "observed_time_axis_rate_hz": null,
+      "first_device_s": null,
+      "last_device_s": null,
+      "min_step_s": null,
+      "max_step_s": null
+    },
+    {
+      "slot": 5,
+      "sid": 57643,
+      "present": false,
+      "samples": 0,
+      "sdk_rate_hz": 1000.0,
+      "observed_time_axis_rate_hz": null,
+      "first_device_s": null,
+      "last_device_s": null,
+      "min_step_s": null,
+      "max_step_s": null
+    },
+    {
+      "slot": 6,
+      "sid": 56683,
+      "present": false,
+      "samples": 0,
+      "sdk_rate_hz": 1000.0,
+      "observed_time_axis_rate_hz": null,
+      "first_device_s": null,
+      "last_device_s": null,
+      "min_step_s": null,
+      "max_step_s": null
+    }
+  ],
+  "stop": {
+    "kind": "stop",
+    "windows_wall_ns": 1791046425880566800,
+    "windows_mono_ns": 1020288093805600,
+    "run_id": "72d08d118d9b45aea3ad6a44b6f362b0",
+    "last_seq": 263,
+    "channel_sample_counts": [
+      0,
+      1496,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "recording_complete": true,
+    "reason": "normal_stop",
+    "error": null,
+    "io_queue_peak": 4
+  },
+  "raw_poll_values_equal_receiver": true,
+  "delay_ms": {
+    "min": 2.948922,
+    "median": 631.024134,
+    "max": 2696.960258,
+    "p95": 2232.603544,
+    "negative_count": 0
+  },
+  "last_send_to_windows_stop_record_ms": 3110.0243,
+  "windows_stop_record_is_not_sdk_stop_duration": true,
+  "receiver_stop_ack_present": false,
+  "delay_sampling_method": "p95 uses sorted samples at floor(0.95*(n-1)); application-processing receipt, not NIC arrival",
+  "raw_unit_metadata_available": false,
+  "input_hashes": {
+    "emg_f1314c1c11b747478815b11db7bd9bda.jsonl": "a239970e36c49adc941e73dcc822cdcefb57e8c93a3152e5cfda1c1c48f04801",
+    "emg_remote_601dbb80285e4754b6d85cfc201e2060.jsonl": "04154438e804cb43a648622758bee8ad3fc2de7eed04557dae6f5de5a6f18fce",
+    "hipexo_20261003_175329_020397.csv": "04bf44671bd6bd2fc98e322595a93369cc5bfb9203f9d9391ba3457bd96b57dc"
+  }
+}

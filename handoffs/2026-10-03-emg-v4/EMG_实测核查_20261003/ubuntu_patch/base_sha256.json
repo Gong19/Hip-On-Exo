@@ -1,0 +1,6 @@
+{
+  "base_file": "hipexo_emg_remote.py from Ubuntu update 20261003",
+  "sha256": "1119b741da7ea8f9394babdb8469ff4ae7275b3f90594cd4d24c49d02d82ae43",
+  "deployment": "Not installed on Ubuntu. Merge only the stop() change if the current file differs.",
+  "core_base_sha256": "a9e5541acbf683a21728b5bb03816a6b1cc1ed633df35f92dc05b8c9d44b7a82"
+}

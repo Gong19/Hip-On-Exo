@@ -17,6 +17,7 @@ def feedback(mid=0):
 
 class PacketTests(unittest.TestCase):
  def test_target_configuration(self):
+  with patch.dict(os.environ,{},clear=True):self.assertEqual(configured_target_hz(),1000)
   with patch.dict(os.environ,{'HIPEXO_MOTOR_NATIVE_HZ':'950'}):self.assertEqual(configured_target_hz(),950)
   with patch.dict(os.environ,{'HIPEXO_MOTOR_NATIVE_HZ':'995'}):self.assertEqual(configured_target_hz(),995)
   with patch.dict(os.environ,{'HIPEXO_MOTOR_NATIVE_HZ':'990'}):self.assertEqual(configured_target_hz(),990)

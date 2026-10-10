@@ -30,3 +30,7 @@ The programme for Hip-On Exoskeleton
 ## Ubuntu V3.2 稳定性修复
 
 [950 Hz电机请求、调度时间表保持及IMU非阻塞交接](ubuntu/2026-10-10-native-v3/docs/STABILITY_950HZ.md)。包含修复前后的短时实测对比；不将其冒充新的20分钟验收。
+
+## Ubuntu V3.3 默认1000 Hz
+
+[默认电机请求恢复1000 Hz，保留调度及IMU交接修复](ubuntu/2026-10-10-native-v3/README.md)。按实际反馈时间戳重采样到1000 Hz，原生数据与质量标记继续保留。

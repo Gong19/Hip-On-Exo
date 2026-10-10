@@ -26,7 +26,7 @@ static_assert(sizeof(Row)==32,"IPC row layout");
 static void append(std::vector<char>&b,const void*p,size_t n){const char*q=(const char*)p;b.insert(b.end(),q,q+n);}
 int main(int argc,char**argv){
  if(argc!=4&&argc!=5)return 2;int ipc=atoi(argv[1]),id=atoi(argv[3]);
- int hz=argc==5?atoi(argv[4]):950;if(id<0||id>14||hz<100||hz>1000)return 2;
+ int hz=argc==5?atoi(argv[4]):1000;if(id<0||id>14||hz<100||hz>1000)return 2;
  int fd=-1;termios original{};bool restore=false;int result=0;
  try{
   // No transmission before the parent has applied scheduling and sent GO.

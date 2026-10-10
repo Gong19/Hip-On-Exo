@@ -2,7 +2,7 @@
 import os,socket,struct,subprocess,threading
 from pathlib import Path
 ROW=struct.Struct('<QQfffi');STATS=struct.Struct('<6Q')
-DEFAULT_TARGET_HZ=950
+DEFAULT_TARGET_HZ=1000
 def configured_target_hz():
     value=int(os.environ.get('HIPEXO_MOTOR_NATIVE_HZ',str(DEFAULT_TARGET_HZ)))
     if not 100<=value<=1000:raise ValueError('Motor native target must be 100..1000 Hz')

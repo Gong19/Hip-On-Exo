@@ -643,7 +643,7 @@ class DataManager(QtCore.QObject):
                 bundle = RecordingBundle(self._export_dir,self.session.metadata,self.session.session_id)
                 path = str(bundle.csv_path)
             if PIPELINE_ENABLED and bundle:
-                acquisition = dict(schema='hipexo-acquisition/2',software_release='native-v3.2-950hz-20261011',
+                acquisition = dict(schema='hipexo-acquisition/2',software_release='native-v3.3-1000hz-20261011',
                     capture_architecture='isolated ADC, per-bus IMU and native zero-output motor processes; active motor control uses SDK port threads; 20ms bounded batches',
                     tuning_requested=os.environ.get('HIPEXO_DISABLE_TUNING')!='1',tuning_note='Scoped controller awake + FIFO10; board-checked I2C-1 source clock 136 to 204 MHz while capturing, then restored; no CPU/GPU overclock',i2c_clock_tuning_requested=os.environ.get('HIPEXO_I2C_CLOCK_TUNING','1')!='0',imu_devices=IMU_DEVICES,
                     imu_poll_targets_hz={'i2c_7':200,'i2c_1':200},imu_config_note='RRATE 200Hz verified on 2026-10-10; hardware register output rate is not measured host/native update rate',

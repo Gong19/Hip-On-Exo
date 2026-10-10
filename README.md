@@ -26,3 +26,7 @@ The programme for Hip-On Exoskeleton
 ## Ubuntu V3.1 长时间采集
 
 [995 Hz 电机监测目标与20分钟持续采集验收](ubuntu/2026-10-10-native-v3/docs/ENDURANCE_20MIN.md)。真实波形仅保存在本机。
+
+## Ubuntu V3.2 稳定性修复
+
+[950 Hz电机请求、调度时间表保持及IMU非阻塞交接](ubuntu/2026-10-10-native-v3/docs/STABILITY_950HZ.md)。包含修复前后的短时实测对比；不将其冒充新的20分钟验收。

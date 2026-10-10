@@ -1,4 +1,4 @@
-import json,socket,struct,threading,unittest
+import json,socket,struct,threading,unittest,time
 from unittest.mock import patch
 import hipexo_imu_capture as capture
 
@@ -36,6 +36,25 @@ class CaptureTest(unittest.TestCase):
     while True:
      try:packet(parent)
      except EOFError:break
+   finally:parent.close();thread.join(3)
+   self.assertFalse(thread.is_alive())
+ def test_slow_parent_does_not_pause_sampling(self):
+  parent,child=socket.socketpair();child.setsockopt(socket.SOL_SOCKET,socket.SO_SNDBUF,1024);parent.settimeout(2)
+  reads=[]
+  class CountingBus(Bus):
+   def read_i2c_block_data(self,addr,reg,n):
+    if reg==0x34:reads.append(time.monotonic())
+    return super().read_i2c_block_data(addr,reg,n)
+  with patch.object(capture,'SMBus',CountingBus),patch.object(capture,'tune_current_process',return_value={'test':True}):
+   thread=threading.Thread(target=capture.child,args=(child.detach(),dict(bus=99,devices=[(0,0x50),(1,0x51)],retry_s=.01)))
+   thread.start()
+   try:
+    packet(parent);time.sleep(.15);before=len(reads);time.sleep(.15);continued=len(reads)-before
+    parent.sendall(b'stop')
+    while True:
+     try:packet(parent)
+     except EOFError:break
+    self.assertGreaterEqual(continued,30,'A stalled GUI must not block native I2C sampling')
    finally:parent.close();thread.join(3)
    self.assertFalse(thread.is_alive())
 if __name__=='__main__':unittest.main()

@@ -1,0 +1,276 @@
+{
+  "baseline": {
+    "seconds": 180,
+    "streams": {
+      "imu_0": {
+        "hz": 199.99995716104144,
+        "samples": 36000,
+        "min_second": 200,
+        "max_second": 200,
+        "std_second": 0.0,
+        "max_gap_ms": 6.770643,
+        "p99_gap_ms": 5.374133719999998,
+        "gaps_over_10ms": 0
+      },
+      "imu_1": {
+        "hz": 199.9998301854271,
+        "samples": 36000,
+        "min_second": 200,
+        "max_second": 200,
+        "std_second": 0.0,
+        "max_gap_ms": 7.029659,
+        "p99_gap_ms": 5.5290769599999985,
+        "gaps_over_10ms": 0
+      },
+      "imu_2": {
+        "hz": 199.99991548768816,
+        "samples": 36000,
+        "min_second": 200,
+        "max_second": 200,
+        "std_second": 0.0,
+        "max_gap_ms": 6.372774,
+        "p99_gap_ms": 5.37309948,
+        "gaps_over_10ms": 0
+      },
+      "imu_3": {
+        "hz": 199.99997853051704,
+        "samples": 36000,
+        "min_second": 200,
+        "max_second": 200,
+        "std_second": 0.0,
+        "max_gap_ms": 7.479561,
+        "p99_gap_ms": 5.542418739999999,
+        "gaps_over_10ms": 0
+      },
+      "force_0": {
+        "hz": 999.9999541886365,
+        "samples": 180000,
+        "min_second": 1000,
+        "max_second": 1000,
+        "std_second": 0.0,
+        "max_gap_ms": 2.241382,
+        "p99_gap_ms": 1.1914302799999994,
+        "gaps_over_10ms": 0
+      },
+      "force_1": {
+        "hz": 999.9999188106666,
+        "samples": 180000,
+        "min_second": 1000,
+        "max_second": 1000,
+        "std_second": 0.0,
+        "max_gap_ms": 2.253862,
+        "p99_gap_ms": 1.24349402,
+        "gaps_over_10ms": 0
+      },
+      "motor_0": {
+        "hz": 947.7976115101633,
+        "samples": 170604,
+        "min_second": 939,
+        "max_second": 951,
+        "std_second": 2.042329824272052,
+        "max_gap_ms": 8.227328,
+        "p99_gap_ms": 2.0528633600000004,
+        "gaps_over_10ms": 0
+      },
+      "motor_1": {
+        "hz": 948.130926741816,
+        "samples": 170664,
+        "min_second": 939,
+        "max_second": 951,
+        "std_second": 2.0314198646923454,
+        "max_gap_ms": 7.483497,
+        "p99_gap_ms": 2.04765978,
+        "gaps_over_10ms": 0
+      }
+    },
+    "motor_transport": {
+      "motor_0_transport_quality": {
+        "sent": 174241,
+        "valid": 174241,
+        "bad_bytes": 0,
+        "skipped_deadlines": 199,
+        "tx_errors": 0,
+        "queue_peak_bytes": 724,
+        "mode": "native_zero_output",
+        "target_hz": 950,
+        "timestamp_basis": "host_validated_frame",
+        "request_reply_matching": false,
+        "final": true,
+        "tuning_error": null,
+        "cpu_affinity": 4,
+        "counter_scope": "capture process lifetime; may include time outside recording"
+      },
+      "motor_1_transport_quality": {
+        "sent": 174315,
+        "valid": 174315,
+        "bad_bytes": 0,
+        "skipped_deadlines": 211,
+        "tx_errors": 0,
+        "queue_peak_bytes": 724,
+        "mode": "native_zero_output",
+        "target_hz": 950,
+        "timestamp_basis": "host_validated_frame",
+        "request_reply_matching": false,
+        "final": true,
+        "tuning_error": null,
+        "cpu_affinity": 5,
+        "counter_scope": "capture process lifetime; may include time outside recording"
+      }
+    },
+    "grid_rows": 180000,
+    "grid_missing": {
+      "imu_0": 0,
+      "imu_1": 0,
+      "imu_2": 0,
+      "imu_3": 0,
+      "force_0": 0,
+      "force_1": 0,
+      "motor_0": 0,
+      "motor_1": 0
+    },
+    "record_errors": {
+      "late_frames": 0,
+      "out_of_order_frames": 0,
+      "queue_overflow": 0,
+      "buffer_overflow": 0,
+      "error": null
+    }
+  },
+  "fixed": {
+    "seconds": 180,
+    "streams": {
+      "imu_0": {
+        "hz": 200.000077582118,
+        "samples": 35999,
+        "min_second": 199,
+        "max_second": 201,
+        "std_second": 0.6951995894243628,
+        "max_gap_ms": 6.145083,
+        "p99_gap_ms": 5.329805649999999,
+        "gaps_over_10ms": 0
+      },
+      "imu_1": {
+        "hz": 200.0000703664238,
+        "samples": 36000,
+        "min_second": 200,
+        "max_second": 200,
+        "std_second": 0.0,
+        "max_gap_ms": 6.705585,
+        "p99_gap_ms": 5.463981759999999,
+        "gaps_over_10ms": 0
+      },
+      "imu_2": {
+        "hz": 200.00021974523435,
+        "samples": 36000,
+        "min_second": 200,
+        "max_second": 200,
+        "std_second": 0.0,
+        "max_gap_ms": 6.305024,
+        "p99_gap_ms": 5.324172699999998,
+        "gaps_over_10ms": 0
+      },
+      "imu_3": {
+        "hz": 200.0000696930713,
+        "samples": 36000,
+        "min_second": 200,
+        "max_second": 200,
+        "std_second": 0.0,
+        "max_gap_ms": 6.870038,
+        "p99_gap_ms": 5.495154039999999,
+        "gaps_over_10ms": 0
+      },
+      "force_0": {
+        "hz": 999.9995322753981,
+        "samples": 180000,
+        "min_second": 1000,
+        "max_second": 1000,
+        "std_second": 0.0,
+        "max_gap_ms": 2.170371,
+        "p99_gap_ms": 1.18013202,
+        "gaps_over_10ms": 0
+      },
+      "force_1": {
+        "hz": 999.9994709417851,
+        "samples": 180000,
+        "min_second": 1000,
+        "max_second": 1000,
+        "std_second": 0.0,
+        "max_gap_ms": 2.400555,
+        "p99_gap_ms": 1.239622,
+        "gaps_over_10ms": 0
+      },
+      "motor_0": {
+        "hz": 949.2026946651631,
+        "samples": 170857,
+        "min_second": 943,
+        "max_second": 951,
+        "std_second": 1.2279034626468999,
+        "max_gap_ms": 6.62571,
+        "p99_gap_ms": 2.0397575000000003,
+        "gaps_over_10ms": 0
+      },
+      "motor_1": {
+        "hz": 949.213715864289,
+        "samples": 170859,
+        "min_second": 943,
+        "max_second": 951,
+        "std_second": 1.296469565139627,
+        "max_gap_ms": 7.59534,
+        "p99_gap_ms": 2.04252643,
+        "gaps_over_10ms": 0
+      }
+    },
+    "motor_transport": {
+      "motor_0_transport_quality": {
+        "sent": 174690,
+        "valid": 174690,
+        "bad_bytes": 0,
+        "skipped_deadlines": 145,
+        "tx_errors": 0,
+        "queue_peak_bytes": 724,
+        "mode": "native_zero_output",
+        "target_hz": 950,
+        "timestamp_basis": "host_validated_frame",
+        "request_reply_matching": false,
+        "final": true,
+        "tuning_error": null,
+        "cpu_affinity": 4,
+        "counter_scope": "capture process lifetime; may include time outside recording"
+      },
+      "motor_1_transport_quality": {
+        "sent": 174724,
+        "valid": 174724,
+        "bad_bytes": 0,
+        "skipped_deadlines": 142,
+        "tx_errors": 0,
+        "queue_peak_bytes": 724,
+        "mode": "native_zero_output",
+        "target_hz": 950,
+        "timestamp_basis": "host_validated_frame",
+        "request_reply_matching": false,
+        "final": true,
+        "tuning_error": null,
+        "cpu_affinity": 5,
+        "counter_scope": "capture process lifetime; may include time outside recording"
+      }
+    },
+    "grid_rows": 180000,
+    "grid_missing": {
+      "imu_0": 0,
+      "imu_1": 0,
+      "imu_2": 0,
+      "imu_3": 0,
+      "force_0": 0,
+      "force_1": 0,
+      "motor_0": 0,
+      "motor_1": 0
+    },
+    "record_errors": {
+      "late_frames": 0,
+      "out_of_order_frames": 0,
+      "queue_overflow": 0,
+      "buffer_overflow": 0,
+      "error": null
+    }
+  }
+}

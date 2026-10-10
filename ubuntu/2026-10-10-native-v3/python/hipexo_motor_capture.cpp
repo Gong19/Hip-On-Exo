@@ -1,3 +1,4 @@
+#include "hipexo_motor_schedule.h"
 // GO-M8010-6 zero-output monitor. Uses the locally installed vendor codec only.
 // Parent owns the serial lease; no active/position/torque commands are accepted.
 #include "unitreeMotor/unitreeMotor.h"
@@ -25,7 +26,7 @@ static_assert(sizeof(Row)==32,"IPC row layout");
 static void append(std::vector<char>&b,const void*p,size_t n){const char*q=(const char*)p;b.insert(b.end(),q,q+n);}
 int main(int argc,char**argv){
  if(argc!=4&&argc!=5)return 2;int ipc=atoi(argv[1]),id=atoi(argv[3]);
- int hz=argc==5?atoi(argv[4]):995;if(id<0||id>14||hz<100||hz>1000)return 2;
+ int hz=argc==5?atoi(argv[4]):950;if(id<0||id>14||hz<100||hz>1000)return 2;
  int fd=-1;termios original{};bool restore=false;int result=0;
  try{
   // No transmission before the parent has applied scheduling and sent GO.
@@ -40,20 +41,17 @@ int main(int argc,char**argv){
   cmd.q=cmd.dq=cmd.kp=cmd.kd=cmd.tau=0;cmd.modify_data(&cmd);
   MotorData data;data.motorType=MotorType::GO_M8010_6;data.hex_len=16;
   Stats stats{};std::vector<Row> rows;rows.reserve(32);std::vector<char> pending;pending.reserve(65536);size_t consumed=0;
-  char rx[4096];size_t used=0;uint64_t next=stamp(),last_flush=next,stop_at=0,send_until=UINT64_MAX;const uint64_t period=1000000000ULL/hz;uint64_t last_tx=0;
+  char rx[4096];size_t used=0;uint64_t initial=stamp(),last_flush=initial,stop_at=0,send_until=UINT64_MAX;MotorSchedule schedule(initial,hz);
   auto flush=[&](){uint32_t size=sizeof(Stats)+rows.size()*sizeof(Row);append(pending,&size,4);append(pending,&stats,sizeof(stats));if(!rows.empty())append(pending,rows.data(),rows.size()*sizeof(Row));rows.clear();stats.queue_peak=std::max(stats.queue_peak,uint64_t(pending.size()-consumed));if(pending.size()-consumed>262144)throw std::runtime_error("motor IPC bounded queue overflow");};
   for(;;){auto now=stamp();
    char control;ssize_t r=recv(ipc,&control,1,MSG_DONTWAIT);
    if(r==0)break; // Parent gone: cease all TX immediately.
    if(r>0&&control=='S'&&!stop_at){send_until=now;stop_at=now+100000000;}
    if(r<0&&errno!=EAGAIN&&errno!=EWOULDBLOCK&&errno!=EINTR)break;
-   if(now>=next&&now<send_until){
-    if(last_tx && now-last_tx<750000){next=last_tx+750000;continue;}
-    // Never burst overdue requests: it can collide with half-duplex responses.
-    if(now-next>period){stats.skipped+=(now-next)/period;next=now;}
+   if(now>=schedule.due()&&now<send_until){
     auto n=write(fd,cmd.get_motor_send_data(),cmd.hex_len);
     if(n!=cmd.hex_len){stats.tx_errors++;throw std::runtime_error("partial motor command write");}
-    stats.sent++;last_tx=stamp();next+=period;
+    stats.sent++;stats.skipped+=schedule.sent(now,stamp());
    }
    if(now-last_flush>=20000000||rows.size()>=32){flush();last_flush=now;}
    if(consumed<pending.size()){
@@ -62,7 +60,7 @@ int main(int argc,char**argv){
     if(consumed==pending.size()){pending.clear();consumed=0;}else if(consumed>65536){pending.erase(pending.begin(),pending.begin()+consumed);consumed=0;}
    }
    if(stop_at&&now>=stop_at){flush();break;}
-   auto wait_now=stamp();uint64_t delay=now<send_until?(next>wait_now?next-wait_now:0):1000000;
+   auto wait_now=stamp();uint64_t delay=now<send_until?(schedule.due()>wait_now?schedule.due()-wait_now:0):1000000;
    timespec timeout{0,(long)std::min(delay,uint64_t(1000000))};fd_set f;FD_ZERO(&f);FD_SET(fd,&f);FD_SET(ipc,&f);
    int count=pselect(std::max(fd,ipc)+1,&f,0,0,&timeout,0);
    if(count>0&&FD_ISSET(fd,&f)){

@@ -1,21 +1,17 @@
 """One bounded raw-IMU capture process per I2C bus; references stay in parent."""
-import fcntl,json,select,socket,struct,sys,time
+import fcntl,json,select,socket,sys,time
 from smbus2 import SMBus
 from hipexo_realtime import tune_current_process
-
-
-def send(sock,value):
-    raw=json.dumps(value,separators=(',',':')).encode()
-    sock.sendall(struct.pack('!I',len(raw))+raw)
+from hipexo_capture_ipc import PacketSender
 
 
 def child(fd,config):
-    sock=socket.socket(fileno=fd);sock.settimeout(2)
+    sock=socket.socket(fileno=fd);sender=PacketSender(sock)
     bus=None;lease=None
     try:
         lease=open(f"/tmp/hipexo-i2c-{config['bus']}.lock",'w')
         fcntl.flock(lease,fcntl.LOCK_EX|fcntl.LOCK_NB)
-        bus=SMBus(config['bus']);send(sock,dict(tuning=tune_current_process()))
+        bus=SMBus(config['bus']);sender.send(dict(tuning=tune_current_process()))
         deadline=time.perf_counter();flush=deadline+.02;batch=[];retry={};last_temp={};temps={}
         while True:
             for idx,addr in config['devices']:
@@ -36,13 +32,16 @@ def child(fd,config):
                     batch.append(dict(idx=idx,error=str(exc)));retry[idx]=now+config['retry_s']
             now=time.perf_counter()
             if now>=flush or len(batch)>=16:
-                send(sock,dict(samples=batch));batch=[];flush=now+.02
+                sender.send(dict(samples=batch,capture_ipc_peak_bytes=sender.peak));batch=[];flush=now+.02
                 if select.select([sock],[],[],0)[0]:sock.recv(16);break
+            sender.pump()
             deadline+=.005;delay=deadline-time.perf_counter()
             if delay>0:time.sleep(delay)
             elif delay<-.005:deadline=time.perf_counter()
+        sender.drain()
     except Exception as exc:
-        try:send(sock,dict(error=str(exc)))
+        try:
+            sender.drain();sender.send(dict(error=str(exc)));sender.drain()
         except Exception:pass
     finally:
         if bus:bus.close()

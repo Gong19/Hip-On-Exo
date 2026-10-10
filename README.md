@@ -34,3 +34,7 @@ The programme for Hip-On Exoskeleton
 ## Ubuntu V3.3 默认1000 Hz
 
 [默认电机请求恢复1000 Hz，保留调度及IMU交接修复](ubuntu/2026-10-10-native-v3/README.md)。按实际反馈时间戳重采样到1000 Hz，原生数据与质量标记继续保留。
+
+## Ubuntu：真实桌面实时波形10分钟测试
+
+[可见界面、实时曲线、内存与采集完整性验收](ubuntu/2026-10-10-native-v3/docs/VISIBLE_10MIN.md)。使用X11桌面显示，波形页轮换；截图和真实信号仅留本机。

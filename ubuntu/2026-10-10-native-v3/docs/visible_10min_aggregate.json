@@ -1,0 +1,300 @@
+{
+  "core_seconds": 600.0,
+  "processed_grid": {
+    "core_rows": 600000,
+    "expected_rows": 600000,
+    "index_discontinuities": 0,
+    "quality_counts": {
+      "imu_0": {
+        "0": 0,
+        "1": 0,
+        "2": 600000,
+        "3": 0
+      },
+      "imu_1": {
+        "0": 0,
+        "1": 0,
+        "2": 600000,
+        "3": 0
+      },
+      "imu_2": {
+        "0": 0,
+        "1": 0,
+        "2": 600000,
+        "3": 0
+      },
+      "imu_3": {
+        "0": 0,
+        "1": 0,
+        "2": 600000,
+        "3": 0
+      },
+      "force_0": {
+        "0": 0,
+        "1": 0,
+        "2": 600000,
+        "3": 0
+      },
+      "force_1": {
+        "0": 0,
+        "1": 0,
+        "2": 600000,
+        "3": 0
+      },
+      "motor_0": {
+        "0": 0,
+        "1": 0,
+        "2": 600000,
+        "3": 0
+      },
+      "motor_1": {
+        "0": 0,
+        "1": 0,
+        "2": 600000,
+        "3": 0
+      }
+    },
+    "motor_interpolation_check": {
+      "motor_0": {
+        "points_compared": 10000,
+        "max_abs_error_rad": 4.999973768349264e-10
+      },
+      "motor_1": {
+        "points_compared": 10000,
+        "max_abs_error_rad": 4.998783609266866e-10
+      }
+    }
+  },
+  "cycle_check": {
+    "cycles": 2018,
+    "index_errors": [],
+    "selected_payloads": [
+      {
+        "cycle_id": 0,
+        "rows": 300,
+        "valid": true
+      },
+      {
+        "cycle_id": 1009,
+        "rows": 300,
+        "valid": true
+      },
+      {
+        "cycle_id": 2017,
+        "rows": 300,
+        "valid": true
+      }
+    ],
+    "last_offset_matches_file": true
+  },
+  "motor_transport": {
+    "motor_0_transport_quality": {
+      "sent": 603881,
+      "valid": 603881,
+      "bad_bytes": 0,
+      "skipped_deadlines": 456,
+      "tx_errors": 0,
+      "queue_peak_bytes": 756,
+      "mode": "native_zero_output",
+      "target_hz": 1000,
+      "timestamp_basis": "host_validated_frame",
+      "request_reply_matching": false,
+      "final": true,
+      "tuning_error": null,
+      "cpu_affinity": 4,
+      "counter_scope": "capture process lifetime; may include time outside recording",
+      "sent_minus_valid": 0,
+      "native_csv_matches_valid": true
+    },
+    "motor_1_transport_quality": {
+      "sent": 603831,
+      "valid": 603831,
+      "bad_bytes": 0,
+      "skipped_deadlines": 531,
+      "tx_errors": 0,
+      "queue_peak_bytes": 756,
+      "mode": "native_zero_output",
+      "target_hz": 1000,
+      "timestamp_basis": "host_validated_frame",
+      "request_reply_matching": false,
+      "final": true,
+      "tuning_error": null,
+      "cpu_affinity": 5,
+      "counter_scope": "capture process lifetime; may include time outside recording",
+      "sent_minus_valid": 0,
+      "native_csv_matches_valid": true
+    }
+  },
+  "visible_gui": {
+    "qt_platform": "xcb",
+    "qt_offscreen": false,
+    "screen_geometry": [
+      1920,
+      1080
+    ],
+    "all_health_checks_visible": true,
+    "all_plot_timers_active": true,
+    "paint_events": 141722,
+    "refresh": {
+      "Motor": {
+        "visible_seconds": 210.212168994,
+        "completed_redraws": 1365,
+        "mean_redraws_per_visible_second": 6.49343949273917,
+        "curve_setData_calls": 8190
+      },
+      "IMU": {
+        "visible_seconds": 211.092947372,
+        "completed_redraws": 353,
+        "mean_redraws_per_visible_second": 1.6722491414074736,
+        "curve_setData_calls": 12708
+      },
+      "Force": {
+        "visible_seconds": 178.693275201,
+        "completed_redraws": 754,
+        "mean_redraws_per_visible_second": 4.219520847395495,
+        "curve_setData_calls": 1508
+      }
+    },
+    "max_event_loop_interval_ms": 959.1543569986243,
+    "note": "Refresh counters wrap the original plot methods; screenshots read the actual X11 window. Counts exclude warm-up snapshot. Current page is redrawn; hidden pages retain normal bounded buffers."
+  },
+  "visible_memory": {
+    "sampled_total_rss_peak_mib": 524.64453125,
+    "sampled_gui_rss_peak_mib": 447.171875,
+    "sampled_children_rss_peak_mib": 78.49609375,
+    "minutes_3_to_6_total_rss_median_mib": 518.9375,
+    "last_3min_total_rss_median_mib": 515.765625,
+    "last_3min_total_rss_range_mib": [
+      515.16796875,
+      518.48828125
+    ],
+    "minimum_system_available_mib": 2491.78515625,
+    "desktop_rss_range_mib": [
+      587.53515625,
+      606.703125
+    ],
+    "system_swap_used_first_last_mib": [
+      814.75,
+      833.25
+    ],
+    "system_swapin_pages_delta": 1380,
+    "system_swapout_pages_delta": 6546,
+    "note": "RSS sums can double-count shared pages; 10-second sampling is not an instantaneous peak. Xorg/GNOME and system-wide swap include other applications.",
+    "observed_acquisition_process_swap_kib_max": 0
+  },
+  "native_summary": {
+    "imu_0": {
+      "core_samples": 120000,
+      "core_rate_hz": 200.00000495570808,
+      "interval_ms": {
+        "p50": 4.999579,
+        "p99": 5.32672756,
+        "p999": 5.552620768000003,
+        "maximum": 6.182399
+      },
+      "gaps_over_10ms": 0,
+      "counts_per_second_min": 200,
+      "counts_per_second_max": 200
+    },
+    "imu_1": {
+      "core_samples": 120000,
+      "core_rate_hz": 200.00001858815662,
+      "interval_ms": {
+        "p50": 4.998875,
+        "p99": 5.46391364,
+        "p999": 5.804883768000003,
+        "maximum": 6.850772
+      },
+      "gaps_over_10ms": 0,
+      "counts_per_second_min": 200,
+      "counts_per_second_max": 200
+    },
+    "imu_2": {
+      "core_samples": 120000,
+      "core_rate_hz": 200.00000435803642,
+      "interval_ms": {
+        "p50": 4.999258,
+        "p99": 5.31437328,
+        "p999": 5.621713646000014,
+        "maximum": 7.111163
+      },
+      "gaps_over_10ms": 0,
+      "counts_per_second_min": 200,
+      "counts_per_second_max": 200
+    },
+    "imu_3": {
+      "core_samples": 120000,
+      "core_rate_hz": 200.0000413410197,
+      "interval_ms": {
+        "p50": 4.997979,
+        "p99": 5.49041254,
+        "p999": 5.856985032000016,
+        "maximum": 7.33629
+      },
+      "gaps_over_10ms": 0,
+      "counts_per_second_min": 200,
+      "counts_per_second_max": 200
+    },
+    "force_0": {
+      "core_samples": 600000,
+      "core_rate_hz": 1000.0000685201189,
+      "interval_ms": {
+        "p50": 0.999455,
+        "p99": 1.1463412600000011,
+        "p999": 1.3468260640000032,
+        "maximum": 2.394538
+      },
+      "gaps_over_10ms": 0,
+      "counts_per_second_min": 1000,
+      "counts_per_second_max": 1000
+    },
+    "force_1": {
+      "core_samples": 600000,
+      "core_rate_hz": 1000.0002748188668,
+      "interval_ms": {
+        "p50": 0.999135,
+        "p99": 1.2193986200000007,
+        "p999": 1.419628128000006,
+        "maximum": 2.765398
+      },
+      "gaps_over_10ms": 0,
+      "counts_per_second_min": 1000,
+      "counts_per_second_max": 1000
+    },
+    "motor_0": {
+      "core_samples": 599549,
+      "core_rate_hz": 999.2487672174777,
+      "interval_ms": {
+        "p50": 0.999583,
+        "p99": 1.945132960000001,
+        "p999": 2.1533204720000216,
+        "maximum": 11.44765
+      },
+      "gaps_over_10ms": 1,
+      "counts_per_second_min": 990,
+      "counts_per_second_max": 1001
+    },
+    "motor_1": {
+      "core_samples": 599474,
+      "core_rate_hz": 999.123783686739,
+      "interval_ms": {
+        "p50": 0.999423,
+        "p99": 1.4145159600000008,
+        "p999": 2.099298792000003,
+        "maximum": 11.382112
+      },
+      "gaps_over_10ms": 1,
+      "counts_per_second_min": 988,
+      "counts_per_second_max": 1001
+    }
+  },
+  "record_quality": {
+    "accepted_frames": 2900330,
+    "late_frames": 0,
+    "out_of_order_frames": 0,
+    "queue_overflow": 0,
+    "buffer_overflow": 0,
+    "parent_max_queued_bytes": 758560,
+    "error": null
+  }
+}

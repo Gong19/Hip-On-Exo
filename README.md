@@ -22,3 +22,7 @@ The programme for Hip-On Exoskeleton
 [2026-10-10 V3：四 IMU 200 Hz、电机接近 1 kHz 零输出反馈及非阻塞 ADC 交接](ubuntu/2026-10-10-native-v3/README.md)
 
 包含180秒完整界面联测结果。主动电机控制仍使用SDK原路径；实际频率、时间戳含义和限制见验收报告。
+
+## Ubuntu V3.1 长时间采集
+
+[995 Hz 电机监测目标与20分钟持续采集验收](ubuntu/2026-10-10-native-v3/docs/ENDURANCE_20MIN.md)。真实波形仅保存在本机。

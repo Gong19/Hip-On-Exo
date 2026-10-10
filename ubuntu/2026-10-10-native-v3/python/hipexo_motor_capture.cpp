@@ -24,7 +24,8 @@ struct Stats{uint64_t sent,valid,bad_bytes,skipped,tx_errors,queue_peak;};
 static_assert(sizeof(Row)==32,"IPC row layout");
 static void append(std::vector<char>&b,const void*p,size_t n){const char*q=(const char*)p;b.insert(b.end(),q,q+n);}
 int main(int argc,char**argv){
- if(argc!=4)return 2;int ipc=atoi(argv[1]),id=atoi(argv[3]);if(id<0||id>14)return 2;
+ if(argc!=4&&argc!=5)return 2;int ipc=atoi(argv[1]),id=atoi(argv[3]);
+ int hz=argc==5?atoi(argv[4]):995;if(id<0||id>14||hz<100||hz>1000)return 2;
  int fd=-1;termios original{};bool restore=false;int result=0;
  try{
   // No transmission before the parent has applied scheduling and sent GO.
@@ -39,7 +40,7 @@ int main(int argc,char**argv){
   cmd.q=cmd.dq=cmd.kp=cmd.kd=cmd.tau=0;cmd.modify_data(&cmd);
   MotorData data;data.motorType=MotorType::GO_M8010_6;data.hex_len=16;
   Stats stats{};std::vector<Row> rows;rows.reserve(32);std::vector<char> pending;pending.reserve(65536);size_t consumed=0;
-  char rx[4096];size_t used=0;uint64_t next=stamp(),last_flush=next,stop_at=0,send_until=UINT64_MAX;const uint64_t period=1000000;uint64_t last_tx=0;
+  char rx[4096];size_t used=0;uint64_t next=stamp(),last_flush=next,stop_at=0,send_until=UINT64_MAX;const uint64_t period=1000000000ULL/hz;uint64_t last_tx=0;
   auto flush=[&](){uint32_t size=sizeof(Stats)+rows.size()*sizeof(Row);append(pending,&size,4);append(pending,&stats,sizeof(stats));if(!rows.empty())append(pending,rows.data(),rows.size()*sizeof(Row));rows.clear();stats.queue_peak=std::max(stats.queue_peak,uint64_t(pending.size()-consumed));if(pending.size()-consumed>262144)throw std::runtime_error("motor IPC bounded queue overflow");};
   for(;;){auto now=stamp();
    char control;ssize_t r=recv(ipc,&control,1,MSG_DONTWAIT);

@@ -10,7 +10,7 @@ APP=QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
 class FakeCapture:
  active=False;started=threading.Event()
  def __init__(self,*a):
-  self.stopping=False;self.sock=SimpleNamespace(_closed=False);self.stats={};self.tuning_error=None;self.cpu_affinity=4;FakeCapture.active=True;FakeCapture.started.set()
+  self.target_hz=995;self.stopping=False;self.sock=SimpleNamespace(_closed=False);self.stats={};self.tuning_error=None;self.cpu_affinity=4;FakeCapture.active=True;FakeCapture.started.set()
  def request_stop(self):self.stopping=True
  def stop(self):self.stopping=True;FakeCapture.active=False
  def receive(self):

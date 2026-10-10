@@ -643,12 +643,12 @@ class DataManager(QtCore.QObject):
                 bundle = RecordingBundle(self._export_dir,self.session.metadata,self.session.session_id)
                 path = str(bundle.csv_path)
             if PIPELINE_ENABLED and bundle:
-                acquisition = dict(schema='hipexo-acquisition/2',software_release='native-v3-20261010',
+                acquisition = dict(schema='hipexo-acquisition/2',software_release='native-v3.1-995hz-20261010',
                     capture_architecture='isolated ADC, per-bus IMU and native zero-output motor processes; active motor control uses SDK port threads; 20ms bounded batches',
                     tuning_requested=os.environ.get('HIPEXO_DISABLE_TUNING')!='1',tuning_note='Scoped controller awake + FIFO10; board-checked I2C-1 source clock 136 to 204 MHz while capturing, then restored; no CPU/GPU overclock',i2c_clock_tuning_requested=os.environ.get('HIPEXO_I2C_CLOCK_TUNING','1')!='0',imu_devices=IMU_DEVICES,
                     imu_poll_targets_hz={'i2c_7':200,'i2c_1':200},imu_config_note='RRATE 200Hz verified on 2026-10-10; hardware register output rate is not measured host/native update rate',
                     force_channels=FORCE_CHANNELS,force_target_hz=FORCE_SAMPLE_HZ,force_spi_hz=FORCE_SPI_SPEED,force_adc='ADS8688',force_adc_reference_v=4.096,force_conversion_version='ADS8688-datasheet-v1',
-                    motor_log_target_hz=MOTOR_LOG_HZ,motor_gear_ratio=MOTOR_GEAR_RATIO,motor_native_monitor_requested=os.environ.get('HIPEXO_MOTOR_NATIVE','1')!='0',motor_timestamp_note='Native monitor uses host validated-frame time; asynchronous replies are not paired to requests; round-trip field is NaN; inspect motor_*_transport_quality.json',
+                    motor_native_target_hz=__import__('hipexo_motor_process').configured_target_hz(),motor_log_target_hz=MOTOR_LOG_HZ,motor_gear_ratio=MOTOR_GEAR_RATIO,motor_native_monitor_requested=os.environ.get('HIPEXO_MOTOR_NATIVE','1')!='0',motor_timestamp_note='Native monitor uses host validated-frame time; asynchronous replies are not paired to requests; round-trip field is NaN; inspect motor_*_transport_quality.json',
                     camera_mode='images' if VISION_IMAGE_ONLY else 'inference',camera_target_fps=VISION_CAPTURE_FPS,
                     timestamp_semantics='Local host read completion; EMG mapped source time; not hardware synchronized')
                 (bundle.directory/'acquisition_config.json').write_text(json.dumps(acquisition,ensure_ascii=False,indent=2),encoding='utf-8')
@@ -1559,7 +1559,7 @@ class MotorWorker(QtCore.QObject):
         capture=None;last_gui=0.;last_report=0.;last_received=time.monotonic()
         def report(final=False):
             nonlocal last_report
-            stats=dict(capture.stats,mode='native_zero_output',timestamp_basis='host_validated_frame',
+            stats=dict(capture.stats,mode='native_zero_output',target_hz=capture.target_hz,timestamp_basis='host_validated_frame',
                        request_reply_matching=False,final=final,tuning_error=capture.tuning_error,cpu_affinity=capture.cpu_affinity,
                        counter_scope='capture process lifetime; may include time outside recording')
             self.transport_stats[port]=stats

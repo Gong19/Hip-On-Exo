@@ -1,0 +1,242 @@
+{
+  "core_seconds": 1200.0,
+  "processed_grid": {
+    "core_rows": 1200000,
+    "expected_rows": 1200000,
+    "index_discontinuities": 0,
+    "quality_counts": {
+      "imu_0": {
+        "0": 190,
+        "1": 0,
+        "2": 1199810,
+        "3": 0
+      },
+      "imu_1": {
+        "0": 190,
+        "1": 0,
+        "2": 1199810,
+        "3": 0
+      },
+      "imu_2": {
+        "0": 226,
+        "1": 0,
+        "2": 1199774,
+        "3": 0
+      },
+      "imu_3": {
+        "0": 226,
+        "1": 0,
+        "2": 1199774,
+        "3": 0
+      },
+      "force_0": {
+        "0": 0,
+        "1": 0,
+        "2": 1200000,
+        "3": 0
+      },
+      "force_1": {
+        "0": 0,
+        "1": 0,
+        "2": 1200000,
+        "3": 0
+      },
+      "motor_0": {
+        "0": 0,
+        "1": 0,
+        "2": 1200000,
+        "3": 0
+      },
+      "motor_1": {
+        "0": 0,
+        "1": 1,
+        "2": 1199999,
+        "3": 0
+      }
+    },
+    "motor_interpolation_check": {
+      "motor_0": {
+        "points_compared": 10000,
+        "max_abs_error_rad": 4.999440861297444e-10
+      },
+      "motor_1": {
+        "points_compared": 10000,
+        "max_abs_error_rad": 4.999805014449521e-10
+      }
+    }
+  },
+  "cycle_check": {
+    "cycles": 4017,
+    "index_errors": [],
+    "selected_payloads": [
+      {
+        "cycle_id": 0,
+        "rows": 300,
+        "valid": true
+      },
+      {
+        "cycle_id": 2008,
+        "rows": 300,
+        "valid": true
+      },
+      {
+        "cycle_id": 4016,
+        "rows": 300,
+        "valid": true
+      }
+    ],
+    "last_offset_matches_file": true
+  },
+  "memory": {
+    "max_total_rss_mib": 463.59765625,
+    "after_3min_min_mib": 453.30078125,
+    "after_3min_max_mib": 463.59765625,
+    "last_3min_median_mib": 460.41796875,
+    "minutes_3_to_6_median_mib": 459.74609375
+  },
+  "motor_transport": {
+    "motor_0_transport_quality": {
+      "sent": 1194024,
+      "valid": 1194024,
+      "bad_bytes": 0,
+      "skipped_deadlines": 1093,
+      "tx_errors": 0,
+      "queue_peak_bytes": 756,
+      "mode": "native_zero_output",
+      "target_hz": 995,
+      "timestamp_basis": "host_validated_frame",
+      "request_reply_matching": false,
+      "final": true,
+      "tuning_error": null,
+      "cpu_affinity": 4,
+      "counter_scope": "capture process lifetime; may include time outside recording",
+      "sent_minus_valid": 0,
+      "native_csv_matches_valid": true
+    },
+    "motor_1_transport_quality": {
+      "sent": 1195472,
+      "valid": 1195472,
+      "bad_bytes": 0,
+      "skipped_deadlines": 1074,
+      "tx_errors": 0,
+      "queue_peak_bytes": 724,
+      "mode": "native_zero_output",
+      "target_hz": 995,
+      "timestamp_basis": "host_validated_frame",
+      "request_reply_matching": false,
+      "final": true,
+      "tuning_error": null,
+      "cpu_affinity": 5,
+      "counter_scope": "capture process lifetime; may include time outside recording",
+      "sent_minus_valid": 0,
+      "native_csv_matches_valid": true
+    }
+  },
+  "verdict": "Motor and force sustained recording passed within measured host timing limits; IMU has a shared 190\u2013226 ms acquisition gap and signal anomalies requiring follow-up. Not an all-sensor stability pass.",
+  "native_summary": {
+    "imu_0": {
+      "core_samples": 239963,
+      "core_rate_hz": 199.96930503751165,
+      "interval_ms": {
+        "p50": 5.000213,
+        "p99": 5.372923859999998,
+        "p999": 5.679479745000009,
+        "maximum": 189.72612
+      },
+      "gaps_over_10ms": 1,
+      "gaps_over_40ms": 1,
+      "empty_seconds": 0
+    },
+    "imu_1": {
+      "core_samples": 239963,
+      "core_rate_hz": 199.96931468441156,
+      "interval_ms": {
+        "p50": 4.9995055,
+        "p99": 5.52176217,
+        "p999": 5.880102286000013,
+        "maximum": 189.726152
+      },
+      "gaps_over_10ms": 1,
+      "gaps_over_40ms": 1,
+      "empty_seconds": 0
+    },
+    "imu_2": {
+      "core_samples": 239956,
+      "core_rate_hz": 199.9631922827365,
+      "interval_ms": {
+        "p50": 5.000413,
+        "p99": 5.3558892,
+        "p999": 5.684047442000007,
+        "maximum": 226.271508
+      },
+      "gaps_over_10ms": 1,
+      "gaps_over_40ms": 1,
+      "empty_seconds": 0
+    },
+    "imu_3": {
+      "core_samples": 239955,
+      "core_rate_hz": 199.96320856863724,
+      "interval_ms": {
+        "p50": 4.999893500000001,
+        "p99": 5.53222694,
+        "p999": 5.930381805000027,
+        "maximum": 226.344118
+      },
+      "gaps_over_10ms": 1,
+      "gaps_over_40ms": 1,
+      "empty_seconds": 0
+    },
+    "force_0": {
+      "core_samples": 1200000,
+      "core_rate_hz": 1000.0000134358447,
+      "interval_ms": {
+        "p50": 0.999773,
+        "p99": 1.18653102,
+        "p999": 1.411177256000012,
+        "maximum": 4.088664
+      },
+      "gaps_over_10ms": 0,
+      "gaps_over_40ms": 0,
+      "empty_seconds": 0
+    },
+    "force_1": {
+      "core_samples": 1200001,
+      "core_rate_hz": 1000.0002623242355,
+      "interval_ms": {
+        "p50": 0.999646,
+        "p99": 1.2464053100000003,
+        "p999": 1.4980280650000106,
+        "maximum": 4.053911
+      },
+      "gaps_over_10ms": 0,
+      "gaps_over_40ms": 0,
+      "empty_seconds": 0
+    },
+    "motor_0": {
+      "core_samples": 1190064,
+      "core_rate_hz": 991.7203688243127,
+      "interval_ms": {
+        "p50": 0.999935,
+        "p99": 1.999007,
+        "p999": 2.2834005800000337,
+        "maximum": 9.3796
+      },
+      "gaps_over_10ms": 0,
+      "gaps_over_40ms": 0,
+      "empty_seconds": 0
+    },
+    "motor_1": {
+      "core_samples": 1191509,
+      "core_rate_hz": 992.9244639218095,
+      "interval_ms": {
+        "p50": 0.999773,
+        "p99": 1.8628314199999938,
+        "p999": 2.1863349510000085,
+        "maximum": 9.225067
+      },
+      "gaps_over_10ms": 0,
+      "gaps_over_40ms": 0,
+      "empty_seconds": 0
+    }
+  }
+}

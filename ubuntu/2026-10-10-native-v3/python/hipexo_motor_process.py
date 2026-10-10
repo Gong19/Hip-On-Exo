@@ -2,13 +2,19 @@
 import os,socket,struct,subprocess,threading
 from pathlib import Path
 ROW=struct.Struct('<QQfffi');STATS=struct.Struct('<6Q')
+DEFAULT_TARGET_HZ=995
+def configured_target_hz():
+    value=int(os.environ.get('HIPEXO_MOTOR_NATIVE_HZ',str(DEFAULT_TARGET_HZ)))
+    if not 100<=value<=1000:raise ValueError('Motor native target must be 100..1000 Hz')
+    return value
 KEYS=('sent','valid','bad_bytes','skipped_deadlines','tx_errors','queue_peak_bytes')
 class MotorCapture:
     def __init__(self,port,motor_id):
+        self.target_hz=configured_target_hz()
         self.sock,other=socket.socketpair();self.sock.settimeout(.05);self.pending=bytearray();self.stats={};self._stop_lock=threading.Lock();self.stopping=False;self.tuning_error=None;self.cpu_affinity=None
         binary=Path(__file__).with_name('hipexo_motor_capture')
         try:
-            self.process=subprocess.Popen([str(binary),str(other.fileno()),port,str(motor_id)],pass_fds=(other.fileno(),),stdout=subprocess.DEVNULL,stderr=subprocess.PIPE)
+            self.process=subprocess.Popen([str(binary),str(other.fileno()),port,str(motor_id),str(self.target_hz)],pass_fds=(other.fileno(),),stdout=subprocess.DEVNULL,stderr=subprocess.PIPE)
             if os.environ.get('HIPEXO_DISABLE_TUNING')!='1':
                 try:
                     cpus=sorted(os.sched_getaffinity(0))

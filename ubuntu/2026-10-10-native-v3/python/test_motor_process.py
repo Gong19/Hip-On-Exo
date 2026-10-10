@@ -2,7 +2,7 @@
 import os,pty,socket,struct,time,unittest,select
 from pathlib import Path
 from unittest.mock import patch
-from hipexo_motor_process import MotorCapture,ROW,STATS
+from hipexo_motor_process import MotorCapture,ROW,STATS,configured_target_hz
 
 def crc(data):
  v=0
@@ -16,6 +16,13 @@ def feedback(mid=0):
  return b+struct.pack('<H',crc(b))
 
 class PacketTests(unittest.TestCase):
+ def test_target_configuration(self):
+  with patch.dict(os.environ,{'HIPEXO_MOTOR_NATIVE_HZ':'995'}):self.assertEqual(configured_target_hz(),995)
+  with patch.dict(os.environ,{'HIPEXO_MOTOR_NATIVE_HZ':'990'}):self.assertEqual(configured_target_hz(),990)
+  for value in ['0','1001','nan']:
+   with patch.dict(os.environ,{'HIPEXO_MOTOR_NATIVE_HZ':value}):
+    with self.assertRaises(ValueError):configured_target_hz()
+
  def test_packet_split_and_invalid_length(self):
   c=MotorCapture.__new__(MotorCapture);c.sock,other=socket.socketpair();c.pending=bytearray();c.stats={}
   payload=STATS.pack(3,2,0,0,0,64)+ROW.pack(100,200,1,2,25,0);packet=struct.pack('<I',len(payload))+payload

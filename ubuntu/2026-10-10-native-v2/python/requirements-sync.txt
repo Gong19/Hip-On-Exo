@@ -1,0 +1,2 @@
+# ARM64 binary wheel available; stdlib JSON fallback exists but is slower.
+orjson==3.13.0

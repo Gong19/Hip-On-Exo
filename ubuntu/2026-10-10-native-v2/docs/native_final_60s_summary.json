@@ -1,0 +1,58 @@
+{
+  "seconds": 60.63682515900291,
+  "full_gui": false,
+  "motor_zero_output_only": true,
+  "complete": true,
+  "rates": {
+    "motor_0": {
+      "samples": 24800,
+      "accepted_rate_hz": 414.2340432626204,
+      "max_interval_ms": 13.011189
+    },
+    "motor_1": {
+      "samples": 24891,
+      "accepted_rate_hz": 415.8721265320367,
+      "max_interval_ms": 13.229819
+    },
+    "imu_2": {
+      "samples": 11120,
+      "accepted_rate_hz": 186.6704507753699,
+      "max_interval_ms": 7.206464
+    },
+    "imu_3": {
+      "samples": 11120,
+      "accepted_rate_hz": 186.67271741010472,
+      "max_interval_ms": 6.610477
+    },
+    "imu_0": {
+      "samples": 11905,
+      "accepted_rate_hz": 199.9996544797636,
+      "max_interval_ms": 5.934553
+    },
+    "imu_1": {
+      "samples": 11905,
+      "accepted_rate_hz": 200.00042504122587,
+      "max_interval_ms": 6.275651
+    },
+    "force_0": {
+      "samples": 59520,
+      "accepted_rate_hz": 1000.0021246873887,
+      "max_interval_ms": 1.951453
+    },
+    "force_1": {
+      "samples": 59520,
+      "accepted_rate_hz": 1000.0026924583993,
+      "max_interval_ms": 1.945021
+    }
+  },
+  "quality": {
+    "accepted_frames": 214781,
+    "late_frames": 0,
+    "out_of_order_frames": 0,
+    "queue_overflow": 0,
+    "buffer_overflow": 0,
+    "error": null,
+    "async_writeback_enabled": true,
+    "parent_max_queue_depth": 8
+  }
+}

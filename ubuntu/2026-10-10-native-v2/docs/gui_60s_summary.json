@@ -1,0 +1,146 @@
+{
+  "before_hidden_plot_fix": {
+    "seconds": 60.80515425199701,
+    "qt_offscreen": true,
+    "all_six_pages_rotated": true,
+    "motor_zero_output_only": true,
+    "event_loop_iterations": 204,
+    "event_loop_interval_ms": null,
+    "rates": {
+      "motor_1": {
+        "samples": 16343,
+        "accepted_rate_hz": 271.74252469495855,
+        "max_interval_ms": 28.571319
+      },
+      "motor_0": {
+        "samples": 16186,
+        "accepted_rate_hz": 269.1526232396484,
+        "max_interval_ms": 25.17067
+      },
+      "imu_0": {
+        "samples": 12000,
+        "accepted_rate_hz": 200.0000141611811,
+        "max_interval_ms": 6.132223
+      },
+      "imu_1": {
+        "samples": 12000,
+        "accepted_rate_hz": 200.00108981008876,
+        "max_interval_ms": 6.276195
+      },
+      "imu_2": {
+        "samples": 11196,
+        "accepted_rate_hz": 186.62412733958757,
+        "max_interval_ms": 7.444071
+      },
+      "imu_3": {
+        "samples": 11196,
+        "accepted_rate_hz": 186.6268878156296,
+        "max_interval_ms": 6.810772
+      },
+      "force_0": {
+        "samples": 59900,
+        "accepted_rate_hz": 1000.0028918429509,
+        "max_interval_ms": 1.840473
+      },
+      "force_1": {
+        "samples": 59900,
+        "accepted_rate_hz": 1000.0033032213154,
+        "max_interval_ms": 2.044703
+      }
+    },
+    "quality": {
+      "accepted_frames": 198721,
+      "late_frames": 0,
+      "out_of_order_frames": 0,
+      "queue_overflow": 0,
+      "queue_backpressure_waits": 0,
+      "max_queue_depth": 0,
+      "cycles": 203,
+      "callback_errors": 0,
+      "buffer_overflow": 0,
+      "camera_images": 0,
+      "camera_images_written": 0,
+      "late_images": 0,
+      "camera_device_frame_gaps": 0,
+      "writer_mode": "single-consumer-ipc",
+      "async_writeback_enabled": true,
+      "parent_max_queue_depth": 29,
+      "parent_max_queued_bytes": 149024,
+      "error": null
+    }
+  },
+  "after_hidden_plot_fix": {
+    "seconds": 60.737705463994644,
+    "qt_offscreen": true,
+    "all_six_pages_rotated": true,
+    "motor_zero_output_only": true,
+    "event_loop_iterations": 4661,
+    "event_loop_interval_ms": {
+      "p50": 5.91878050181549,
+      "p99": 177.20446140650884,
+      "maximum": 953.5971359873656
+    },
+    "rates": {
+      "motor_1": {
+        "samples": 21103,
+        "accepted_rate_hz": 352.07241860152226,
+        "max_interval_ms": 31.813429
+      },
+      "motor_0": {
+        "samples": 20933,
+        "accepted_rate_hz": 349.2332276888232,
+        "max_interval_ms": 30.00838
+      },
+      "imu_2": {
+        "samples": 11144,
+        "accepted_rate_hz": 186.41489398257042,
+        "max_interval_ms": 7.079361
+      },
+      "imu_3": {
+        "samples": 11144,
+        "accepted_rate_hz": 186.41743318719128,
+        "max_interval_ms": 7.088449
+      },
+      "force_0": {
+        "samples": 59800,
+        "accepted_rate_hz": 1000.0019334976096,
+        "max_interval_ms": 2.089666
+      },
+      "force_1": {
+        "samples": 59800,
+        "accepted_rate_hz": 1000.001648792832,
+        "max_interval_ms": 2.222087
+      },
+      "imu_0": {
+        "samples": 11938,
+        "accepted_rate_hz": 200.0002242542516,
+        "max_interval_ms": 5.822617
+      },
+      "imu_1": {
+        "samples": 11938,
+        "accepted_rate_hz": 200.00026778958534,
+        "max_interval_ms": 6.60245
+      }
+    },
+    "quality": {
+      "accepted_frames": 207800,
+      "late_frames": 0,
+      "out_of_order_frames": 0,
+      "queue_overflow": 0,
+      "queue_backpressure_waits": 0,
+      "max_queue_depth": 0,
+      "cycles": 203,
+      "callback_errors": 0,
+      "buffer_overflow": 0,
+      "camera_images": 0,
+      "camera_images_written": 0,
+      "late_images": 0,
+      "camera_device_frame_gaps": 0,
+      "writer_mode": "single-consumer-ipc",
+      "async_writeback_enabled": true,
+      "parent_max_queue_depth": 14,
+      "parent_max_queued_bytes": 82080,
+      "error": null
+    }
+  }
+}

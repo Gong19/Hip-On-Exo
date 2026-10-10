@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+emg_config.json
+emg_license.local.json
+*.local.json
+backup-*/
+evidence/
+*.prof
+*.so
+*.dll
+*.pyd
+hipexo_logs/

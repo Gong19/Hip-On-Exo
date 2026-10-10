@@ -1,0 +1,218 @@
+{
+  "image_noise": true,
+  "error": null,
+  "memory_samples": [
+    {
+      "seconds": 0.0,
+      "parent_MiB": 32.4921875,
+      "writer_MiB": 29.80078125
+    },
+    {
+      "seconds": 5.0,
+      "parent_MiB": 39.3671875,
+      "writer_MiB": 55.578125
+    },
+    {
+      "seconds": 10.0,
+      "parent_MiB": 40.66015625,
+      "writer_MiB": 55.8359375
+    },
+    {
+      "seconds": 15.0,
+      "parent_MiB": 40.6640625,
+      "writer_MiB": 55.8359375
+    },
+    {
+      "seconds": 20.0,
+      "parent_MiB": 41.25,
+      "writer_MiB": 55.8359375
+    },
+    {
+      "seconds": 25.0,
+      "parent_MiB": 42.0234375,
+      "writer_MiB": 55.8359375
+    },
+    {
+      "seconds": 30.0,
+      "parent_MiB": 41.25,
+      "writer_MiB": 55.8359375
+    },
+    {
+      "seconds": 35.0,
+      "parent_MiB": 41.25,
+      "writer_MiB": 55.8359375
+    },
+    {
+      "seconds": 40.0,
+      "parent_MiB": 42.0234375,
+      "writer_MiB": 55.8359375
+    },
+    {
+      "seconds": 45.0,
+      "parent_MiB": 41.25,
+      "writer_MiB": 55.8359375
+    },
+    {
+      "seconds": 50.0,
+      "parent_MiB": 41.25,
+      "writer_MiB": 55.8359375
+    },
+    {
+      "seconds": 55.0,
+      "parent_MiB": 41.25,
+      "writer_MiB": 55.8359375
+    },
+    {
+      "seconds": 60.0,
+      "parent_MiB": 41.25,
+      "writer_MiB": 55.8359375
+    },
+    {
+      "seconds": 65.0,
+      "parent_MiB": 41.25,
+      "writer_MiB": 55.8359375
+    },
+    {
+      "seconds": 70.0,
+      "parent_MiB": 42.02734375,
+      "writer_MiB": 55.8359375
+    },
+    {
+      "seconds": 75.0,
+      "parent_MiB": 41.25390625,
+      "writer_MiB": 55.8515625
+    },
+    {
+      "seconds": 80.0,
+      "parent_MiB": 41.25390625,
+      "writer_MiB": 55.8515625
+    },
+    {
+      "seconds": 85.0,
+      "parent_MiB": 41.25390625,
+      "writer_MiB": 55.8515625
+    },
+    {
+      "seconds": 90.0,
+      "parent_MiB": 41.25390625,
+      "writer_MiB": 55.8515625
+    },
+    {
+      "seconds": 95.0,
+      "parent_MiB": 41.25390625,
+      "writer_MiB": 55.8515625
+    },
+    {
+      "seconds": 100.0,
+      "parent_MiB": 43.05859375,
+      "writer_MiB": 55.4296875
+    },
+    {
+      "seconds": 105.0,
+      "parent_MiB": 42.28515625,
+      "writer_MiB": 55.4296875
+    },
+    {
+      "seconds": 110.0,
+      "parent_MiB": 42.28515625,
+      "writer_MiB": 55.4296875
+    },
+    {
+      "seconds": 115.0,
+      "parent_MiB": 42.28515625,
+      "writer_MiB": 55.4296875
+    },
+    {
+      "seconds": 120.0,
+      "parent_MiB": 42.28515625,
+      "writer_MiB": 55.4296875
+    },
+    {
+      "seconds": 125.0,
+      "parent_MiB": 42.28515625,
+      "writer_MiB": 55.4296875
+    },
+    {
+      "seconds": 130.0,
+      "parent_MiB": 42.28515625,
+      "writer_MiB": 55.4296875
+    },
+    {
+      "seconds": 135.0,
+      "parent_MiB": 42.27734375,
+      "writer_MiB": 55.421875
+    },
+    {
+      "seconds": 140.0,
+      "parent_MiB": 42.1484375,
+      "writer_MiB": 56.33984375
+    },
+    {
+      "seconds": 145.0,
+      "parent_MiB": 42.1484375,
+      "writer_MiB": 56.33984375
+    },
+    {
+      "seconds": 150.0,
+      "parent_MiB": 42.1484375,
+      "writer_MiB": 56.33984375
+    },
+    {
+      "seconds": 155.0,
+      "parent_MiB": 42.1484375,
+      "writer_MiB": 56.33984375
+    },
+    {
+      "seconds": 160.0,
+      "parent_MiB": 42.921875,
+      "writer_MiB": 56.33984375
+    },
+    {
+      "seconds": 165.0,
+      "parent_MiB": 42.1484375,
+      "writer_MiB": 56.33984375
+    },
+    {
+      "seconds": 170.0,
+      "parent_MiB": 42.1484375,
+      "writer_MiB": 56.33984375
+    },
+    {
+      "seconds": 175.0,
+      "parent_MiB": 42.921875,
+      "writer_MiB": 56.33984375
+    }
+  ],
+  "expected_frames": 2142000,
+  "generated_frames": 2142000,
+  "completed_input_seconds": 180.0,
+  "expected_images": 3000,
+  "simulated": true,
+  "seconds": 180,
+  "ok": true,
+  "cpu_seconds_parent": 55.888906559999995,
+  "cpu_seconds_children": 203.515116,
+  "elapsed_seconds": 180.829307933,
+  "stop_drain_seconds": 0.8281177569879219,
+  "peak_rss_MiB": 44.54296875,
+  "output_bytes": 1425636788,
+  "metrics": {
+    "accepted_frames": 2142000,
+    "late_frames": 0,
+    "out_of_order_frames": 0,
+    "queue_overflow": 0,
+    "queue_backpressure_waits": 0,
+    "max_queue_depth": 0,
+    "cycles": 601,
+    "callback_errors": 0,
+    "buffer_overflow": 0,
+    "camera_images": 3000,
+    "camera_images_written": 3000,
+    "late_images": 0,
+    "camera_device_frame_gaps": 0,
+    "writer_mode": "single-consumer-ipc",
+    "async_writeback_enabled": true,
+    "parent_max_queue_depth": 190,
+    "parent_max_queued_bytes": 3816768
+  }
+}

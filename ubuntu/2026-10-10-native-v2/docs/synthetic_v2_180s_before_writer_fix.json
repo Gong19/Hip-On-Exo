@@ -1,0 +1,211 @@
+{
+  "image_noise": true,
+  "error": "Recording queue full; incomplete",
+  "memory_samples": [
+    {
+      "seconds": 0.0,
+      "parent_MiB": 32.31640625,
+      "writer_MiB": 35.56640625
+    },
+    {
+      "seconds": 5.0,
+      "parent_MiB": 40.78125,
+      "writer_MiB": 86.56640625
+    },
+    {
+      "seconds": 10.0,
+      "parent_MiB": 40.78125,
+      "writer_MiB": 86.69140625
+    },
+    {
+      "seconds": 15.0,
+      "parent_MiB": 41.296875,
+      "writer_MiB": 86.65234375
+    },
+    {
+      "seconds": 20.0,
+      "parent_MiB": 41.296875,
+      "writer_MiB": 89.11328125
+    },
+    {
+      "seconds": 25.0,
+      "parent_MiB": 41.296875,
+      "writer_MiB": 90.38671875
+    },
+    {
+      "seconds": 30.0,
+      "parent_MiB": 40.71484375,
+      "writer_MiB": 87.62109375
+    },
+    {
+      "seconds": 35.0,
+      "parent_MiB": 40.96875,
+      "writer_MiB": 112.6875
+    },
+    {
+      "seconds": 40.0,
+      "parent_MiB": 40.96875,
+      "writer_MiB": 102.7734375
+    },
+    {
+      "seconds": 45.0,
+      "parent_MiB": 40.71484375,
+      "writer_MiB": 119.07421875
+    },
+    {
+      "seconds": 50.0,
+      "parent_MiB": 40.71484375,
+      "writer_MiB": 121.37890625
+    },
+    {
+      "seconds": 55.0,
+      "parent_MiB": 39.48828125,
+      "writer_MiB": null
+    },
+    {
+      "seconds": 60.0,
+      "parent_MiB": 39.48828125,
+      "writer_MiB": null
+    },
+    {
+      "seconds": 65.0,
+      "parent_MiB": 39.48828125,
+      "writer_MiB": null
+    },
+    {
+      "seconds": 70.0,
+      "parent_MiB": 39.48828125,
+      "writer_MiB": null
+    },
+    {
+      "seconds": 75.0,
+      "parent_MiB": 39.48828125,
+      "writer_MiB": null
+    },
+    {
+      "seconds": 80.0,
+      "parent_MiB": 39.48828125,
+      "writer_MiB": null
+    },
+    {
+      "seconds": 85.0,
+      "parent_MiB": 39.48828125,
+      "writer_MiB": null
+    },
+    {
+      "seconds": 90.0,
+      "parent_MiB": 39.48828125,
+      "writer_MiB": null
+    },
+    {
+      "seconds": 95.0,
+      "parent_MiB": 39.48828125,
+      "writer_MiB": null
+    },
+    {
+      "seconds": 100.0,
+      "parent_MiB": 39.48828125,
+      "writer_MiB": null
+    },
+    {
+      "seconds": 105.0,
+      "parent_MiB": 39.48828125,
+      "writer_MiB": null
+    },
+    {
+      "seconds": 110.0,
+      "parent_MiB": 39.48828125,
+      "writer_MiB": null
+    },
+    {
+      "seconds": 115.0,
+      "parent_MiB": 39.48828125,
+      "writer_MiB": null
+    },
+    {
+      "seconds": 120.0,
+      "parent_MiB": 39.48828125,
+      "writer_MiB": null
+    },
+    {
+      "seconds": 125.0,
+      "parent_MiB": 39.48828125,
+      "writer_MiB": null
+    },
+    {
+      "seconds": 130.0,
+      "parent_MiB": 39.48828125,
+      "writer_MiB": null
+    },
+    {
+      "seconds": 135.0,
+      "parent_MiB": 39.48828125,
+      "writer_MiB": null
+    },
+    {
+      "seconds": 140.0,
+      "parent_MiB": 39.48828125,
+      "writer_MiB": null
+    },
+    {
+      "seconds": 145.0,
+      "parent_MiB": 39.48828125,
+      "writer_MiB": null
+    },
+    {
+      "seconds": 150.0,
+      "parent_MiB": 39.48828125,
+      "writer_MiB": null
+    },
+    {
+      "seconds": 155.0,
+      "parent_MiB": 39.48828125,
+      "writer_MiB": null
+    },
+    {
+      "seconds": 160.0,
+      "parent_MiB": 39.48828125,
+      "writer_MiB": null
+    },
+    {
+      "seconds": 165.0,
+      "parent_MiB": 39.48828125,
+      "writer_MiB": null
+    },
+    {
+      "seconds": 170.0,
+      "parent_MiB": 39.48828125,
+      "writer_MiB": null
+    },
+    {
+      "seconds": 175.0,
+      "parent_MiB": 39.48828125,
+      "writer_MiB": null
+    }
+  ],
+  "expected_frames": 2142000,
+  "expected_images": 3000,
+  "simulated": true,
+  "seconds": 180,
+  "ok": false,
+  "cpu_seconds_parent": 43.548997568,
+  "cpu_seconds_children": 52.559854,
+  "elapsed_seconds": 180.000399574,
+  "stop_drain_seconds": 0.00016938100452534854,
+  "peak_rss_MiB": 42.33203125,
+  "output_bytes": 409569309,
+  "metrics": {
+    "accepted_frames": 606436,
+    "late_frames": 0,
+    "out_of_order_frames": 0,
+    "queue_overflow": 1,
+    "max_queue_depth": 2048,
+    "cycles": 170,
+    "callback_errors": 0,
+    "buffer_overflow": 0,
+    "camera_images": 850,
+    "camera_images_written": 850,
+    "late_images": 0,
+    "camera_device_frame_gaps": 0
+  }
+}

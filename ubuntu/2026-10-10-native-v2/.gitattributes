@@ -1,0 +1,3 @@
+# Cycle manifests contain byte offsets: never rewrite synthetic CSV line endings.
+examples/**/*.csv -text
+examples/**/*.jsonl -text

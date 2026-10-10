@@ -1,0 +1,333 @@
+{
+  "schema": "hipexo-cycle/2",
+  "grid_hz": 1000,
+  "segment_ms": 60,
+  "segments_per_cycle": 5,
+  "cycle_ms": 300,
+  "alignment_wait_ms": 3000.0,
+  "columns": [
+    "cycle_id",
+    "segment_id_0_to_4",
+    "sample_in_segment_0_to_59",
+    "sample_index",
+    "time_from_record_start_ms",
+    "mapped_utc_ns",
+    "within_recording",
+    "imu_0__acceleration_including_gravity_x_g",
+    "imu_0__acceleration_including_gravity_y_g",
+    "imu_0__acceleration_including_gravity_z_g",
+    "imu_0__angular_velocity_x_deg_s",
+    "imu_0__angular_velocity_y_deg_s",
+    "imu_0__angular_velocity_z_deg_s",
+    "imu_0__orientation_roll_deg",
+    "imu_0__orientation_pitch_deg",
+    "imu_0__orientation_yaw_deg",
+    "imu_0__reference_relative_roll_deg",
+    "imu_0__reference_relative_pitch_deg",
+    "imu_0__reference_relative_yaw_deg",
+    "imu_0__reference_id",
+    "imu_0__reference_valid",
+    "imu_0__host_read_duration_ms",
+    "imu_0__repeated_register_block",
+    "imu_0__quality",
+    "imu_0__source_age_ms",
+    "imu_1__acceleration_including_gravity_x_g",
+    "imu_1__acceleration_including_gravity_y_g",
+    "imu_1__acceleration_including_gravity_z_g",
+    "imu_1__angular_velocity_x_deg_s",
+    "imu_1__angular_velocity_y_deg_s",
+    "imu_1__angular_velocity_z_deg_s",
+    "imu_1__orientation_roll_deg",
+    "imu_1__orientation_pitch_deg",
+    "imu_1__orientation_yaw_deg",
+    "imu_1__reference_relative_roll_deg",
+    "imu_1__reference_relative_pitch_deg",
+    "imu_1__reference_relative_yaw_deg",
+    "imu_1__reference_id",
+    "imu_1__reference_valid",
+    "imu_1__host_read_duration_ms",
+    "imu_1__repeated_register_block",
+    "imu_1__quality",
+    "imu_1__source_age_ms",
+    "imu_2__acceleration_including_gravity_x_g",
+    "imu_2__acceleration_including_gravity_y_g",
+    "imu_2__acceleration_including_gravity_z_g",
+    "imu_2__angular_velocity_x_deg_s",
+    "imu_2__angular_velocity_y_deg_s",
+    "imu_2__angular_velocity_z_deg_s",
+    "imu_2__orientation_roll_deg",
+    "imu_2__orientation_pitch_deg",
+    "imu_2__orientation_yaw_deg",
+    "imu_2__reference_relative_roll_deg",
+    "imu_2__reference_relative_pitch_deg",
+    "imu_2__reference_relative_yaw_deg",
+    "imu_2__reference_id",
+    "imu_2__reference_valid",
+    "imu_2__host_read_duration_ms",
+    "imu_2__repeated_register_block",
+    "imu_2__quality",
+    "imu_2__source_age_ms",
+    "imu_3__acceleration_including_gravity_x_g",
+    "imu_3__acceleration_including_gravity_y_g",
+    "imu_3__acceleration_including_gravity_z_g",
+    "imu_3__angular_velocity_x_deg_s",
+    "imu_3__angular_velocity_y_deg_s",
+    "imu_3__angular_velocity_z_deg_s",
+    "imu_3__orientation_roll_deg",
+    "imu_3__orientation_pitch_deg",
+    "imu_3__orientation_yaw_deg",
+    "imu_3__reference_relative_roll_deg",
+    "imu_3__reference_relative_pitch_deg",
+    "imu_3__reference_relative_yaw_deg",
+    "imu_3__reference_id",
+    "imu_3__reference_valid",
+    "imu_3__host_read_duration_ms",
+    "imu_3__repeated_register_block",
+    "imu_3__quality",
+    "imu_3__source_age_ms",
+    "motor_0__rotor_position_rad",
+    "motor_0__rotor_angular_velocity_rad_s",
+    "motor_0__temperature_degC",
+    "motor_0__motor_error_code",
+    "motor_0__host_round_trip_ms",
+    "motor_0__quality",
+    "motor_0__source_age_ms",
+    "motor_1__rotor_position_rad",
+    "motor_1__rotor_angular_velocity_rad_s",
+    "motor_1__temperature_degC",
+    "motor_1__motor_error_code",
+    "motor_1__host_round_trip_ms",
+    "motor_1__quality",
+    "motor_1__source_age_ms",
+    "force_0__sensor_voltage_V",
+    "force_0__load_equivalent_kgf",
+    "force_0__ADC_raw_count",
+    "force_0__quality",
+    "force_0__source_age_ms",
+    "force_1__sensor_voltage_V",
+    "force_1__load_equivalent_kgf",
+    "force_1__ADC_raw_count",
+    "force_1__quality",
+    "force_1__source_age_ms",
+    "emg_0__resampled_input_V",
+    "emg_0__baseline_corrected_envelope_V",
+    "emg_0__MVC_normalized_ratio",
+    "emg_0__source_valid",
+    "emg_0__quality",
+    "emg_0__source_age_ms",
+    "emg_1__resampled_input_V",
+    "emg_1__baseline_corrected_envelope_V",
+    "emg_1__MVC_normalized_ratio",
+    "emg_1__source_valid",
+    "emg_1__quality",
+    "emg_1__source_age_ms",
+    "emg_2__resampled_input_V",
+    "emg_2__baseline_corrected_envelope_V",
+    "emg_2__MVC_normalized_ratio",
+    "emg_2__source_valid",
+    "emg_2__quality",
+    "emg_2__source_age_ms",
+    "emg_3__resampled_input_V",
+    "emg_3__baseline_corrected_envelope_V",
+    "emg_3__MVC_normalized_ratio",
+    "emg_3__source_valid",
+    "emg_3__quality",
+    "emg_3__source_age_ms",
+    "emg_4__resampled_input_V",
+    "emg_4__baseline_corrected_envelope_V",
+    "emg_4__MVC_normalized_ratio",
+    "emg_4__source_valid",
+    "emg_4__quality",
+    "emg_4__source_age_ms",
+    "emg_5__resampled_input_V",
+    "emg_5__baseline_corrected_envelope_V",
+    "emg_5__MVC_normalized_ratio",
+    "emg_5__source_valid",
+    "emg_5__quality",
+    "emg_5__source_age_ms",
+    "emg_6__resampled_input_V",
+    "emg_6__baseline_corrected_envelope_V",
+    "emg_6__MVC_normalized_ratio",
+    "emg_6__source_valid",
+    "emg_6__quality",
+    "emg_6__source_age_ms",
+    "lidar_L__scan_point_count",
+    "lidar_L__nonzero_point_count",
+    "lidar_L__bad_packet_count",
+    "lidar_L__reported_scan_rate_Hz",
+    "lidar_L__quality",
+    "lidar_L__source_age_ms",
+    "lidar_R__scan_point_count",
+    "lidar_R__nonzero_point_count",
+    "lidar_R__bad_packet_count",
+    "lidar_R__reported_scan_rate_Hz",
+    "lidar_R__quality",
+    "lidar_R__source_age_ms"
+  ],
+  "start_mono_ns": 104020089454711,
+  "start_wall_ns": 1791590400000000000,
+  "quality_codes": {
+    "0": "missing",
+    "1": "exact timestamp match, not proof of native 1kHz",
+    "2": "linear interpolation, angles use shortest arc",
+    "3": "held LiDAR scan summary"
+  },
+  "max_gap_ms": {
+    "imu": 40,
+    "motor": 40,
+    "force": 40,
+    "emg": 4,
+    "lidar": 250
+  },
+  "field_mapping": {
+    "imu": [
+      [
+        "ax_g",
+        "acceleration_including_gravity_x_g"
+      ],
+      [
+        "ay_g",
+        "acceleration_including_gravity_y_g"
+      ],
+      [
+        "az_g",
+        "acceleration_including_gravity_z_g"
+      ],
+      [
+        "gx_dps",
+        "angular_velocity_x_deg_s"
+      ],
+      [
+        "gy_dps",
+        "angular_velocity_y_deg_s"
+      ],
+      [
+        "gz_dps",
+        "angular_velocity_z_deg_s"
+      ],
+      [
+        "roll_deg",
+        "orientation_roll_deg"
+      ],
+      [
+        "pitch_deg",
+        "orientation_pitch_deg"
+      ],
+      [
+        "yaw_deg",
+        "orientation_yaw_deg"
+      ],
+      [
+        "rel_roll_deg",
+        "reference_relative_roll_deg"
+      ],
+      [
+        "rel_pitch_deg",
+        "reference_relative_pitch_deg"
+      ],
+      [
+        "rel_yaw_deg",
+        "reference_relative_yaw_deg"
+      ],
+      [
+        "reference_id",
+        "reference_id"
+      ],
+      [
+        "reference_valid",
+        "reference_valid"
+      ],
+      [
+        "read_duration_ms",
+        "host_read_duration_ms"
+      ],
+      [
+        "repeated_register_block",
+        "repeated_register_block"
+      ]
+    ],
+    "motor": [
+      [
+        "q_rotor",
+        "rotor_position_rad"
+      ],
+      [
+        "dq",
+        "rotor_angular_velocity_rad_s"
+      ],
+      [
+        "temp",
+        "temperature_degC"
+      ],
+      [
+        "merror",
+        "motor_error_code"
+      ],
+      [
+        "read_duration_ms",
+        "host_round_trip_ms"
+      ]
+    ],
+    "force": [
+      [
+        "V",
+        "sensor_voltage_V"
+      ],
+      [
+        "kg",
+        "load_equivalent_kgf"
+      ],
+      [
+        "adc_raw_count",
+        "ADC_raw_count"
+      ]
+    ],
+    "emg": [
+      [
+        "raw_v",
+        "resampled_input_V"
+      ],
+      [
+        "envelope_v",
+        "baseline_corrected_envelope_V"
+      ],
+      [
+        "mvc_ratio",
+        "MVC_normalized_ratio"
+      ],
+      [
+        "valid",
+        "source_valid"
+      ]
+    ],
+    "lidar": [
+      [
+        "n_scan_points",
+        "scan_point_count"
+      ],
+      [
+        "nonzero_points",
+        "nonzero_point_count"
+      ],
+      [
+        "bad_packets",
+        "bad_packet_count"
+      ],
+      [
+        "reported_hz",
+        "reported_scan_rate_Hz"
+      ]
+    ]
+  },
+  "grid_decimal_places": 9,
+  "notes": [
+    "cycles.jsonl indexes complete combined CSV byte ranges; live callbacks contain full rows.",
+    "Image paths may be indexed before asynchronous encoding finishes; Stop drains image jobs.",
+    "IMU acceleration includes gravity. Camera images are indexed separately, never interpolated.",
+    "EMG input is already processed onto 1kHz. Vendor RMS and raw EMG are distinct; see source metadata.",
+    "Local sensor timestamps are host read times, not hardware trigger synchronization.",
+    "Latency buffer is finite. Late native data retained; already emitted cycles not silently revised.",
+    "Final cycle padded to 300 rows with within_recording=0 beyond Stop. Null means unavailable.",
+    "Sensor native CSVs preserve host/mapped time and selected essential measurements; static metadata logged on change."
+  ]
+}

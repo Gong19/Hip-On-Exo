@@ -1,0 +1,267 @@
+{
+  "test": "real IMU/force + zero-output motors; no EMG/LiDAR/camera validation",
+  "seconds": 180.6512054019986,
+  "csv_complete": true,
+  "rates": {
+    "motor_0": {
+      "samples": 73545,
+      "accepted_rate_hz": 408.8538846083488,
+      "p50_interval_ms": 2.064752,
+      "p99_interval_ms": 5.558345119999984,
+      "max_interval_ms": 14.754792,
+      "identical_register_reads": 0
+    },
+    "motor_1": {
+      "samples": 74078,
+      "accepted_rate_hz": 411.8695933756762,
+      "p50_interval_ms": 2.050048,
+      "p99_interval_ms": 5.547178720000009,
+      "max_interval_ms": 14.536513,
+      "identical_register_reads": 0
+    },
+    "imu_0": {
+      "samples": 35911,
+      "accepted_rate_hz": 200.00005750266203,
+      "p50_interval_ms": 4.998875,
+      "p99_interval_ms": 5.354179759999997,
+      "max_interval_ms": 5.873366,
+      "identical_register_reads": 25751
+    },
+    "imu_1": {
+      "samples": 35911,
+      "accepted_rate_hz": 200.00042429719645,
+      "p50_interval_ms": 4.997754,
+      "p99_interval_ms": 5.5042836,
+      "max_interval_ms": 6.457575,
+      "identical_register_reads": 25511
+    },
+    "imu_2": {
+      "samples": 33524,
+      "accepted_rate_hz": 186.74590609994223,
+      "p50_interval_ms": 5.319525,
+      "p99_interval_ms": 5.955599679999999,
+      "max_interval_ms": 7.249792,
+      "identical_register_reads": 22982
+    },
+    "imu_3": {
+      "samples": 33524,
+      "accepted_rate_hz": 186.74668111023007,
+      "p50_interval_ms": 5.320325,
+      "p99_interval_ms": 5.96838126,
+      "max_interval_ms": 6.85938,
+      "identical_register_reads": 21671
+    },
+    "force_0": {
+      "samples": 179560,
+      "accepted_rate_hz": 1000.0009842067171,
+      "p50_interval_ms": 0.999455,
+      "p99_interval_ms": 1.180684900000001,
+      "max_interval_ms": 1.849913,
+      "identical_register_reads": 0
+    },
+    "force_1": {
+      "samples": 179560,
+      "accepted_rate_hz": 1000.0009893805143,
+      "p50_interval_ms": 0.999134,
+      "p99_interval_ms": 1.239206,
+      "max_interval_ms": 1.9439,
+      "identical_register_reads": 0
+    }
+  },
+  "quality": {
+    "accepted_frames": 645613,
+    "late_frames": 0,
+    "out_of_order_frames": 0,
+    "queue_overflow": 0,
+    "buffer_overflow": 0,
+    "max_queue_depth": 60,
+    "error": null
+  },
+  "memory_after_30s": {
+    "parent_min_MiB": 294.25,
+    "parent_max_MiB": 304.5625,
+    "children_sampling_available": false
+  },
+  "memory_samples": [
+    {
+      "seconds": 0.30262455499905627,
+      "parent_MiB": 258.64453125,
+      "children_MiB": null
+    },
+    {
+      "seconds": 5.312737316999119,
+      "parent_MiB": 267.1796875,
+      "children_MiB": null
+    },
+    {
+      "seconds": 10.319475417010835,
+      "parent_MiB": 275.171875,
+      "children_MiB": null
+    },
+    {
+      "seconds": 15.320558336010436,
+      "parent_MiB": 281.6171875,
+      "children_MiB": null
+    },
+    {
+      "seconds": 20.32191467299708,
+      "parent_MiB": 286.7734375,
+      "children_MiB": null
+    },
+    {
+      "seconds": 25.330207770006382,
+      "parent_MiB": 290.640625,
+      "children_MiB": null
+    },
+    {
+      "seconds": 30.34009272600815,
+      "parent_MiB": 294.25,
+      "children_MiB": null
+    },
+    {
+      "seconds": 35.343134976006695,
+      "parent_MiB": 297.859375,
+      "children_MiB": null
+    },
+    {
+      "seconds": 40.34550866400241,
+      "parent_MiB": 301.46875,
+      "children_MiB": null
+    },
+    {
+      "seconds": 45.35272503001033,
+      "parent_MiB": 303.2734375,
+      "children_MiB": null
+    },
+    {
+      "seconds": 50.3527695290104,
+      "parent_MiB": 303.53125,
+      "children_MiB": null
+    },
+    {
+      "seconds": 55.35438063800393,
+      "parent_MiB": 303.53125,
+      "children_MiB": null
+    },
+    {
+      "seconds": 60.36063694799668,
+      "parent_MiB": 303.53125,
+      "children_MiB": null
+    },
+    {
+      "seconds": 65.3666067860031,
+      "parent_MiB": 303.53125,
+      "children_MiB": null
+    },
+    {
+      "seconds": 70.37118980000378,
+      "parent_MiB": 303.53125,
+      "children_MiB": null
+    },
+    {
+      "seconds": 75.37474436699995,
+      "parent_MiB": 303.53125,
+      "children_MiB": null
+    },
+    {
+      "seconds": 80.38144690499757,
+      "parent_MiB": 303.53125,
+      "children_MiB": null
+    },
+    {
+      "seconds": 85.38327556599688,
+      "parent_MiB": 303.53125,
+      "children_MiB": null
+    },
+    {
+      "seconds": 90.38659931501024,
+      "parent_MiB": 303.53125,
+      "children_MiB": null
+    },
+    {
+      "seconds": 95.3941560920066,
+      "parent_MiB": 303.53125,
+      "children_MiB": null
+    },
+    {
+      "seconds": 100.39610418499797,
+      "parent_MiB": 303.53125,
+      "children_MiB": null
+    },
+    {
+      "seconds": 105.39909695200913,
+      "parent_MiB": 303.53125,
+      "children_MiB": null
+    },
+    {
+      "seconds": 110.3997960179986,
+      "parent_MiB": 303.7890625,
+      "children_MiB": null
+    },
+    {
+      "seconds": 115.4019767310092,
+      "parent_MiB": 303.7890625,
+      "children_MiB": null
+    },
+    {
+      "seconds": 120.41055565900751,
+      "parent_MiB": 303.7890625,
+      "children_MiB": null
+    },
+    {
+      "seconds": 125.41474421300518,
+      "parent_MiB": 303.7890625,
+      "children_MiB": null
+    },
+    {
+      "seconds": 130.41849144200387,
+      "parent_MiB": 303.7890625,
+      "children_MiB": null
+    },
+    {
+      "seconds": 135.4209698659979,
+      "parent_MiB": 303.7890625,
+      "children_MiB": null
+    },
+    {
+      "seconds": 140.4225782160065,
+      "parent_MiB": 304.046875,
+      "children_MiB": null
+    },
+    {
+      "seconds": 145.4265835700062,
+      "parent_MiB": 304.046875,
+      "children_MiB": null
+    },
+    {
+      "seconds": 150.43272476700076,
+      "parent_MiB": 304.046875,
+      "children_MiB": null
+    },
+    {
+      "seconds": 155.44291629899817,
+      "parent_MiB": 304.046875,
+      "children_MiB": null
+    },
+    {
+      "seconds": 160.45353770100337,
+      "parent_MiB": 304.3046875,
+      "children_MiB": null
+    },
+    {
+      "seconds": 165.45843732800859,
+      "parent_MiB": 304.3046875,
+      "children_MiB": null
+    },
+    {
+      "seconds": 170.46600887800741,
+      "parent_MiB": 304.3046875,
+      "children_MiB": null
+    },
+    {
+      "seconds": 175.47319328199956,
+      "parent_MiB": 304.5625,
+      "children_MiB": null
+    }
+  ]
+}

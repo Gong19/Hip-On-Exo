@@ -1,0 +1,210 @@
+{
+  "error": null,
+  "memory_samples": [
+    {
+      "seconds": 0.0,
+      "parent_MiB": 32.375,
+      "writer_MiB": 29.6484375
+    },
+    {
+      "seconds": 5.0,
+      "parent_MiB": 43.0546875,
+      "writer_MiB": 79.46484375
+    },
+    {
+      "seconds": 10.0,
+      "parent_MiB": 43.0546875,
+      "writer_MiB": 80.359375
+    },
+    {
+      "seconds": 15.0,
+      "parent_MiB": 43.0546875,
+      "writer_MiB": 83.15625
+    },
+    {
+      "seconds": 20.0,
+      "parent_MiB": 43.0546875,
+      "writer_MiB": 84.09375
+    },
+    {
+      "seconds": 25.0,
+      "parent_MiB": 43.0546875,
+      "writer_MiB": 84.3515625
+    },
+    {
+      "seconds": 30.0,
+      "parent_MiB": 43.0546875,
+      "writer_MiB": 82.80859375
+    },
+    {
+      "seconds": 35.0,
+      "parent_MiB": 43.0546875,
+      "writer_MiB": 83.8359375
+    },
+    {
+      "seconds": 40.0,
+      "parent_MiB": 43.0546875,
+      "writer_MiB": 84.296875
+    },
+    {
+      "seconds": 45.0,
+      "parent_MiB": 43.0546875,
+      "writer_MiB": 83.8671875
+    },
+    {
+      "seconds": 50.0,
+      "parent_MiB": 43.0546875,
+      "writer_MiB": 89.8046875
+    },
+    {
+      "seconds": 55.0,
+      "parent_MiB": 43.0546875,
+      "writer_MiB": 92.16796875
+    },
+    {
+      "seconds": 60.0,
+      "parent_MiB": 43.3125,
+      "writer_MiB": 88.203125
+    },
+    {
+      "seconds": 65.0,
+      "parent_MiB": 43.828125,
+      "writer_MiB": 89.1640625
+    },
+    {
+      "seconds": 70.0,
+      "parent_MiB": 43.828125,
+      "writer_MiB": 89.7421875
+    },
+    {
+      "seconds": 75.0,
+      "parent_MiB": 43.828125,
+      "writer_MiB": 88.13671875
+    },
+    {
+      "seconds": 80.0,
+      "parent_MiB": 43.828125,
+      "writer_MiB": 92.0
+    },
+    {
+      "seconds": 85.0,
+      "parent_MiB": 43.828125,
+      "writer_MiB": 89.765625
+    },
+    {
+      "seconds": 90.0,
+      "parent_MiB": 43.828125,
+      "writer_MiB": 88.1484375
+    },
+    {
+      "seconds": 95.0,
+      "parent_MiB": 43.828125,
+      "writer_MiB": 89.69140625
+    },
+    {
+      "seconds": 100.0,
+      "parent_MiB": 44.41796875,
+      "writer_MiB": 91.4921875
+    },
+    {
+      "seconds": 105.0,
+      "parent_MiB": 43.828125,
+      "writer_MiB": 88.1484375
+    },
+    {
+      "seconds": 110.0,
+      "parent_MiB": 43.828125,
+      "writer_MiB": 89.265625
+    },
+    {
+      "seconds": 115.0,
+      "parent_MiB": 43.828125,
+      "writer_MiB": 96.75390625
+    },
+    {
+      "seconds": 120.0,
+      "parent_MiB": 43.828125,
+      "writer_MiB": 88.86328125
+    },
+    {
+      "seconds": 125.0,
+      "parent_MiB": 43.828125,
+      "writer_MiB": 90.40625
+    },
+    {
+      "seconds": 130.0,
+      "parent_MiB": 43.828125,
+      "writer_MiB": 90.5234375
+    },
+    {
+      "seconds": 135.0,
+      "parent_MiB": 43.828125,
+      "writer_MiB": 88.9609375
+    },
+    {
+      "seconds": 140.0,
+      "parent_MiB": 43.828125,
+      "writer_MiB": 90.40625
+    },
+    {
+      "seconds": 145.0,
+      "parent_MiB": 43.828125,
+      "writer_MiB": 90.4765625
+    },
+    {
+      "seconds": 150.0,
+      "parent_MiB": 43.828125,
+      "writer_MiB": 88.86328125
+    },
+    {
+      "seconds": 155.0,
+      "parent_MiB": 43.828125,
+      "writer_MiB": 90.40625
+    },
+    {
+      "seconds": 160.0,
+      "parent_MiB": 43.828125,
+      "writer_MiB": 90.40625
+    },
+    {
+      "seconds": 165.0,
+      "parent_MiB": 43.828125,
+      "writer_MiB": 90.40625
+    },
+    {
+      "seconds": 170.0,
+      "parent_MiB": 43.828125,
+      "writer_MiB": 90.41796875
+    },
+    {
+      "seconds": 175.0,
+      "parent_MiB": 43.828125,
+      "writer_MiB": 90.40625
+    }
+  ],
+  "expected_frames": 2142000,
+  "expected_images": 3000,
+  "simulated": true,
+  "seconds": 180,
+  "ok": true,
+  "cpu_seconds_parent": 50.097817024,
+  "cpu_seconds_children": 132.844343,
+  "elapsed_seconds": 180.763075415,
+  "stop_drain_seconds": 0.7605121430096915,
+  "peak_rss_MiB": 44.41796875,
+  "output_bytes": 524374313,
+  "metrics": {
+    "accepted_frames": 2142000,
+    "late_frames": 0,
+    "out_of_order_frames": 0,
+    "queue_overflow": 0,
+    "max_queue_depth": 1477,
+    "cycles": 601,
+    "callback_errors": 0,
+    "buffer_overflow": 0,
+    "camera_images": 3000,
+    "camera_images_written": 3000,
+    "late_images": 0,
+    "camera_device_frame_gaps": 0
+  }
+}

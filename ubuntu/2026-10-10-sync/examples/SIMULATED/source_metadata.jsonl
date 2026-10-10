@@ -1,0 +1,17 @@
+{"kind":"metadata","stream":"imu_0","source_mono_ns":96896227706220,"values":{"reference_id":0,"simulated":true}}
+{"kind":"metadata","stream":"imu_1","source_mono_ns":96896227706220,"values":{"reference_id":0,"simulated":true}}
+{"kind":"metadata","stream":"imu_2","source_mono_ns":96896227706220,"values":{"reference_id":0,"simulated":true}}
+{"kind":"metadata","stream":"imu_3","source_mono_ns":96896227706220,"values":{"reference_id":0,"simulated":true}}
+{"kind":"metadata","stream":"motor_0","source_mono_ns":96896227706220,"values":{"simulated":true,"reference_id":0}}
+{"kind":"metadata","stream":"motor_1","source_mono_ns":96896227706220,"values":{"simulated":true,"reference_id":0}}
+{"kind":"metadata","stream":"force_0","source_mono_ns":96896227706220,"values":{"simulated":true,"reference_id":0}}
+{"kind":"metadata","stream":"force_1","source_mono_ns":96896227706220,"values":{"simulated":true,"reference_id":0}}
+{"kind":"metadata","stream":"emg_0","source_mono_ns":96896227706220,"values":{"simulated":true,"reference_id":0}}
+{"kind":"metadata","stream":"emg_1","source_mono_ns":96896227706220,"values":{"simulated":true,"reference_id":0}}
+{"kind":"metadata","stream":"emg_2","source_mono_ns":96896227706220,"values":{"simulated":true,"reference_id":0}}
+{"kind":"metadata","stream":"emg_3","source_mono_ns":96896227706220,"values":{"simulated":true,"reference_id":0}}
+{"kind":"metadata","stream":"emg_4","source_mono_ns":96896227706220,"values":{"simulated":true,"reference_id":0}}
+{"kind":"metadata","stream":"emg_5","source_mono_ns":96896227706220,"values":{"simulated":true,"reference_id":0}}
+{"kind":"metadata","stream":"emg_6","source_mono_ns":96896227706220,"values":{"simulated":true,"reference_id":0}}
+{"kind":"metadata","stream":"lidar_L","source_mono_ns":96896227706220,"values":{"simulated":true,"reference_id":0}}
+{"kind":"metadata","stream":"lidar_R","source_mono_ns":96896227706220,"values":{"simulated":true,"reference_id":0}}

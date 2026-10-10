@@ -1,0 +1,46 @@
+{
+  "seconds": 181.01510808199237,
+  "rates": {
+    "motor_1": {
+      "samples": 179645,
+      "accepted_rate_hz": 998.5944100287267,
+      "max_interval_ms": 7.771411
+    },
+    "motor_0": {
+      "samples": 179433,
+      "accepted_rate_hz": 997.4951742477564,
+      "max_interval_ms": 7.927704
+    },
+    "force_0": {
+      "samples": 179940,
+      "accepted_rate_hz": 999.1496564767198,
+      "max_interval_ms": 61.762059
+    },
+    "force_1": {
+      "samples": 179940,
+      "accepted_rate_hz": 999.1500175956146,
+      "max_interval_ms": 61.777452
+    },
+    "imu_0": {
+      "samples": 35964,
+      "accepted_rate_hz": 200.0001214782597,
+      "max_interval_ms": 6.154784
+    },
+    "imu_1": {
+      "samples": 35964,
+      "accepted_rate_hz": 200.00059714885074,
+      "max_interval_ms": 6.429065
+    },
+    "imu_2": {
+      "samples": 35912,
+      "accepted_rate_hz": 200.00008387851253,
+      "max_interval_ms": 6.287781
+    },
+    "imu_3": {
+      "samples": 35912,
+      "accepted_rate_hz": 200.00080201708377,
+      "max_interval_ms": 6.485067
+    }
+  },
+  "note": "Before nonblocking ADC IPC; force sampling paused at batch boundaries; not a final pass"
+}

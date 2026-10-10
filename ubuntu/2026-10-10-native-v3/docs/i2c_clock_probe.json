@@ -1,0 +1,20 @@
+[
+  {
+    "requested_clock": 136000000,
+    "read_clock": "136000000",
+    "each_read_rate": 192.95636636307444,
+    "errors": 0
+  },
+  {
+    "requested_clock": 204000000,
+    "read_clock": "204000000",
+    "each_read_rate": 277.2059929546788,
+    "errors": 0
+  },
+  {
+    "requested_clock": 136000000,
+    "read_clock": "136000000",
+    "each_read_rate": 193.20504747635178,
+    "errors": 0
+  }
+]

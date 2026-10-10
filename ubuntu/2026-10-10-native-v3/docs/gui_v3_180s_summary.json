@@ -1,0 +1,121 @@
+{
+  "seconds": 181.1773745459941,
+  "qt_pages_rendered": [
+    "Motor",
+    "IMU",
+    "Force",
+    "EMG",
+    "Vision",
+    "Lidar"
+  ],
+  "qt_offscreen": true,
+  "motor_zero_output_only": true,
+  "event_loop_iterations": 14105,
+  "event_loop_interval_ms": {
+    "p50": 6.009083495882805,
+    "p99": 172.18966576328953,
+    "maximum": 884.6276929980377
+  },
+  "rates": {
+    "motor_1": {
+      "samples": 179751,
+      "accepted_rate_hz": 998.9302277134216,
+      "max_interval_ms": 6.995547,
+      "identical_register_reads": 0
+    },
+    "motor_0": {
+      "samples": 179487,
+      "accepted_rate_hz": 997.65094309881,
+      "max_interval_ms": 6.988603,
+      "identical_register_reads": 0
+    },
+    "imu_0": {
+      "samples": 35988,
+      "accepted_rate_hz": 199.99991486929457,
+      "max_interval_ms": 6.453866,
+      "identical_register_reads": 25750
+    },
+    "imu_1": {
+      "samples": 35988,
+      "accepted_rate_hz": 200.00024399396204,
+      "max_interval_ms": 6.622926,
+      "identical_register_reads": 25487
+    },
+    "force_0": {
+      "samples": 180000,
+      "accepted_rate_hz": 1000.0009264893389,
+      "max_interval_ms": 2.438188,
+      "identical_register_reads": 0
+    },
+    "force_1": {
+      "samples": 180000,
+      "accepted_rate_hz": 1000.0010500513806,
+      "max_interval_ms": 2.413291,
+      "identical_register_reads": 0
+    },
+    "imu_2": {
+      "samples": 35900,
+      "accepted_rate_hz": 200.00005709018595,
+      "max_interval_ms": 7.138718,
+      "identical_register_reads": 24935
+    },
+    "imu_3": {
+      "samples": 35900,
+      "accepted_rate_hz": 200.00014726660612,
+      "max_interval_ms": 7.175424,
+      "identical_register_reads": 24289
+    }
+  },
+  "quality": {
+    "accepted_frames": 863014,
+    "late_frames": 0,
+    "out_of_order_frames": 0,
+    "queue_overflow": 0,
+    "queue_backpressure_waits": 0,
+    "max_queue_depth": 0,
+    "cycles": 604,
+    "callback_errors": 0,
+    "buffer_overflow": 0,
+    "camera_images": 0,
+    "camera_images_written": 0,
+    "late_images": 0,
+    "camera_device_frame_gaps": 0,
+    "writer_mode": "single-consumer-ipc",
+    "async_writeback_enabled": true,
+    "parent_max_queue_depth": 86,
+    "parent_max_queued_bytes": 809600,
+    "error": null
+  },
+  "motor_transport": {
+    "motor_0_transport_quality": {
+      "sent": 179487,
+      "valid": 179487,
+      "bad_bytes": 0,
+      "skipped_deadlines": 110,
+      "tx_errors": 0,
+      "queue_peak_bytes": 756,
+      "mode": "native_zero_output",
+      "timestamp_basis": "host_validated_frame",
+      "request_reply_matching": false,
+      "final": true,
+      "tuning_error": null,
+      "cpu_affinity": 4,
+      "counter_scope": "capture process lifetime; may include time outside recording"
+    },
+    "motor_1_transport_quality": {
+      "sent": 179751,
+      "valid": 179751,
+      "bad_bytes": 0,
+      "skipped_deadlines": 95,
+      "tx_errors": 0,
+      "queue_peak_bytes": 756,
+      "mode": "native_zero_output",
+      "timestamp_basis": "host_validated_frame",
+      "request_reply_matching": false,
+      "final": true,
+      "tuning_error": null,
+      "cpu_affinity": 5,
+      "counter_scope": "capture process lifetime; may include time outside recording"
+    }
+  }
+}

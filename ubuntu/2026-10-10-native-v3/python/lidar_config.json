@@ -1,0 +1,5 @@
+{
+  "L": {"port": "", "send_commands": false},
+  "R": {"port": "", "send_commands": false},
+  "record_directory": "~/HiPExo_Lidar_Records"
+}

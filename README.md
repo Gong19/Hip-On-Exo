@@ -16,3 +16,9 @@ The programme for Hip-On Exoskeleton
 [2026-10-10 V2：双路 ADS8688 原生 1000 Hz、IMU 进程隔离与电机并行采集](ubuntu/2026-10-10-native-v2/README.md)
 
 保留 V1；V2 的实测读取率、抖动、内存和未达标链路见版本验收报告。真实实验数据和凭证不上传。
+
+## Ubuntu 原生采集优化 V3
+
+[2026-10-10 V3：四 IMU 200 Hz、电机接近 1 kHz 零输出反馈及非阻塞 ADC 交接](ubuntu/2026-10-10-native-v3/README.md)
+
+包含180秒完整界面联测结果。主动电机控制仍使用SDK原路径；实际频率、时间戳含义和限制见验收报告。

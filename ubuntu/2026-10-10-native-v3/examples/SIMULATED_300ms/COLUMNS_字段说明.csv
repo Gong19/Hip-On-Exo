@@ -1,0 +1,158 @@
+﻿CSV列名,数据含义与来源
+cycle_id,从0开始的300ms周期编号
+segment_id_0_to_4,周期内60ms片段编号0到4
+sample_in_segment_0_to_59,片段内1ms采样点编号0到59
+sample_index,从本次Record开始的1ms网格索引
+time_from_record_start_ms,相对本次Record起点的毫秒数
+mapped_utc_ns,按Record起点UTC与单调时钟映射的纳秒数
+within_recording,1属于本次记录；0为末周期补齐区域
+imu_0__acceleration_including_gravity_x_g,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_0__acceleration_including_gravity_y_g,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_0__acceleration_including_gravity_z_g,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_0__angular_velocity_x_deg_s,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_0__angular_velocity_y_deg_s,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_0__angular_velocity_z_deg_s,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_0__orientation_roll_deg,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_0__orientation_pitch_deg,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_0__orientation_yaw_deg,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_0__reference_relative_roll_deg,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_0__reference_relative_pitch_deg,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_0__reference_relative_yaw_deg,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_0__reference_id,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_0__reference_valid,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_0__host_read_duration_ms,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_0__repeated_register_block,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_0__quality,0缺失；1时间戳恰好匹配（不代表原始1000Hz）；2插值；3保持上一帧雷达摘要
+imu_0__source_age_ms,目标时刻距离前一个源样本的毫秒数
+imu_1__acceleration_including_gravity_x_g,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_1__acceleration_including_gravity_y_g,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_1__acceleration_including_gravity_z_g,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_1__angular_velocity_x_deg_s,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_1__angular_velocity_y_deg_s,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_1__angular_velocity_z_deg_s,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_1__orientation_roll_deg,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_1__orientation_pitch_deg,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_1__orientation_yaw_deg,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_1__reference_relative_roll_deg,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_1__reference_relative_pitch_deg,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_1__reference_relative_yaw_deg,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_1__reference_id,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_1__reference_valid,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_1__host_read_duration_ms,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_1__repeated_register_block,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_1__quality,0缺失；1时间戳恰好匹配（不代表原始1000Hz）；2插值；3保持上一帧雷达摘要
+imu_1__source_age_ms,目标时刻距离前一个源样本的毫秒数
+imu_2__acceleration_including_gravity_x_g,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_2__acceleration_including_gravity_y_g,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_2__acceleration_including_gravity_z_g,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_2__angular_velocity_x_deg_s,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_2__angular_velocity_y_deg_s,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_2__angular_velocity_z_deg_s,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_2__orientation_roll_deg,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_2__orientation_pitch_deg,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_2__orientation_yaw_deg,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_2__reference_relative_roll_deg,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_2__reference_relative_pitch_deg,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_2__reference_relative_yaw_deg,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_2__reference_id,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_2__reference_valid,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_2__host_read_duration_ms,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_2__repeated_register_block,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_2__quality,0缺失；1时间戳恰好匹配（不代表原始1000Hz）；2插值；3保持上一帧雷达摘要
+imu_2__source_age_ms,目标时刻距离前一个源样本的毫秒数
+imu_3__acceleration_including_gravity_x_g,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_3__acceleration_including_gravity_y_g,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_3__acceleration_including_gravity_z_g,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_3__angular_velocity_x_deg_s,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_3__angular_velocity_y_deg_s,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_3__angular_velocity_z_deg_s,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_3__orientation_roll_deg,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_3__orientation_pitch_deg,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_3__orientation_yaw_deg,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_3__reference_relative_roll_deg,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_3__reference_relative_pitch_deg,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_3__reference_relative_yaw_deg,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_3__reference_id,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_3__reference_valid,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_3__host_read_duration_ms,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_3__repeated_register_block,IMU 加速度含重力；角速度为传感器轴；姿态为设备解算欧拉角；relative 为参考姿态旋转
+imu_3__quality,0缺失；1时间戳恰好匹配（不代表原始1000Hz）；2插值；3保持上一帧雷达摘要
+imu_3__source_age_ms,目标时刻距离前一个源样本的毫秒数
+motor_0__rotor_position_rad,电机转子反馈；输出轴角度=转子角度/减速比；host_round_trip_ms 为主机请求到有效回复的往返耗时，不能直接当作单向延迟扣除
+motor_0__rotor_angular_velocity_rad_s,电机转子反馈；输出轴角度=转子角度/减速比；host_round_trip_ms 为主机请求到有效回复的往返耗时，不能直接当作单向延迟扣除
+motor_0__temperature_degC,电机转子反馈；输出轴角度=转子角度/减速比；host_round_trip_ms 为主机请求到有效回复的往返耗时，不能直接当作单向延迟扣除
+motor_0__motor_error_code,电机转子反馈；输出轴角度=转子角度/减速比；host_round_trip_ms 为主机请求到有效回复的往返耗时，不能直接当作单向延迟扣除
+motor_0__host_round_trip_ms,电机转子反馈；输出轴角度=转子角度/减速比；host_round_trip_ms 为主机请求到有效回复的往返耗时，不能直接当作单向延迟扣除
+motor_0__quality,0缺失；1时间戳恰好匹配（不代表原始1000Hz）；2插值；3保持上一帧雷达摘要
+motor_0__source_age_ms,目标时刻距离前一个源样本的毫秒数
+motor_1__rotor_position_rad,电机转子反馈；输出轴角度=转子角度/减速比；host_round_trip_ms 为主机请求到有效回复的往返耗时，不能直接当作单向延迟扣除
+motor_1__rotor_angular_velocity_rad_s,电机转子反馈；输出轴角度=转子角度/减速比；host_round_trip_ms 为主机请求到有效回复的往返耗时，不能直接当作单向延迟扣除
+motor_1__temperature_degC,电机转子反馈；输出轴角度=转子角度/减速比；host_round_trip_ms 为主机请求到有效回复的往返耗时，不能直接当作单向延迟扣除
+motor_1__motor_error_code,电机转子反馈；输出轴角度=转子角度/减速比；host_round_trip_ms 为主机请求到有效回复的往返耗时，不能直接当作单向延迟扣除
+motor_1__host_round_trip_ms,电机转子反馈；输出轴角度=转子角度/减速比；host_round_trip_ms 为主机请求到有效回复的往返耗时，不能直接当作单向延迟扣除
+motor_1__quality,0缺失；1时间戳恰好匹配（不代表原始1000Hz）；2插值；3保持上一帧雷达摘要
+motor_1__source_age_ms,目标时刻距离前一个源样本的毫秒数
+force_0__sensor_voltage_V,力传感器电压与标定载荷（kgf 等效）；牛顿值=kgf×9.80665
+force_0__load_equivalent_kgf,力传感器电压与标定载荷（kgf 等效）；牛顿值=kgf×9.80665
+force_0__ADC_raw_count,力传感器电压与标定载荷（kgf 等效）；牛顿值=kgf×9.80665
+force_0__quality,0缺失；1时间戳恰好匹配（不代表原始1000Hz）；2插值；3保持上一帧雷达摘要
+force_0__source_age_ms,目标时刻距离前一个源样本的毫秒数
+force_1__sensor_voltage_V,力传感器电压与标定载荷（kgf 等效）；牛顿值=kgf×9.80665
+force_1__load_equivalent_kgf,力传感器电压与标定载荷（kgf 等效）；牛顿值=kgf×9.80665
+force_1__ADC_raw_count,力传感器电压与标定载荷（kgf 等效）；牛顿值=kgf×9.80665
+force_1__quality,0缺失；1时间戳恰好匹配（不代表原始1000Hz）；2插值；3保持上一帧雷达摘要
+force_1__source_age_ms,目标时刻距离前一个源样本的毫秒数
+emg_0__resampled_input_V,EMG 处理网格；原始/RMS 模式、单位和滤波版本见 source_metadata.jsonl；原始设备包在会话 EMG 日志
+emg_0__baseline_corrected_envelope_V,EMG 处理网格；原始/RMS 模式、单位和滤波版本见 source_metadata.jsonl；原始设备包在会话 EMG 日志
+emg_0__MVC_normalized_ratio,EMG 处理网格；原始/RMS 模式、单位和滤波版本见 source_metadata.jsonl；原始设备包在会话 EMG 日志
+emg_0__source_valid,EMG 处理网格；原始/RMS 模式、单位和滤波版本见 source_metadata.jsonl；原始设备包在会话 EMG 日志
+emg_0__quality,0缺失；1时间戳恰好匹配（不代表原始1000Hz）；2插值；3保持上一帧雷达摘要
+emg_0__source_age_ms,目标时刻距离前一个源样本的毫秒数
+emg_1__resampled_input_V,EMG 处理网格；原始/RMS 模式、单位和滤波版本见 source_metadata.jsonl；原始设备包在会话 EMG 日志
+emg_1__baseline_corrected_envelope_V,EMG 处理网格；原始/RMS 模式、单位和滤波版本见 source_metadata.jsonl；原始设备包在会话 EMG 日志
+emg_1__MVC_normalized_ratio,EMG 处理网格；原始/RMS 模式、单位和滤波版本见 source_metadata.jsonl；原始设备包在会话 EMG 日志
+emg_1__source_valid,EMG 处理网格；原始/RMS 模式、单位和滤波版本见 source_metadata.jsonl；原始设备包在会话 EMG 日志
+emg_1__quality,0缺失；1时间戳恰好匹配（不代表原始1000Hz）；2插值；3保持上一帧雷达摘要
+emg_1__source_age_ms,目标时刻距离前一个源样本的毫秒数
+emg_2__resampled_input_V,EMG 处理网格；原始/RMS 模式、单位和滤波版本见 source_metadata.jsonl；原始设备包在会话 EMG 日志
+emg_2__baseline_corrected_envelope_V,EMG 处理网格；原始/RMS 模式、单位和滤波版本见 source_metadata.jsonl；原始设备包在会话 EMG 日志
+emg_2__MVC_normalized_ratio,EMG 处理网格；原始/RMS 模式、单位和滤波版本见 source_metadata.jsonl；原始设备包在会话 EMG 日志
+emg_2__source_valid,EMG 处理网格；原始/RMS 模式、单位和滤波版本见 source_metadata.jsonl；原始设备包在会话 EMG 日志
+emg_2__quality,0缺失；1时间戳恰好匹配（不代表原始1000Hz）；2插值；3保持上一帧雷达摘要
+emg_2__source_age_ms,目标时刻距离前一个源样本的毫秒数
+emg_3__resampled_input_V,EMG 处理网格；原始/RMS 模式、单位和滤波版本见 source_metadata.jsonl；原始设备包在会话 EMG 日志
+emg_3__baseline_corrected_envelope_V,EMG 处理网格；原始/RMS 模式、单位和滤波版本见 source_metadata.jsonl；原始设备包在会话 EMG 日志
+emg_3__MVC_normalized_ratio,EMG 处理网格；原始/RMS 模式、单位和滤波版本见 source_metadata.jsonl；原始设备包在会话 EMG 日志
+emg_3__source_valid,EMG 处理网格；原始/RMS 模式、单位和滤波版本见 source_metadata.jsonl；原始设备包在会话 EMG 日志
+emg_3__quality,0缺失；1时间戳恰好匹配（不代表原始1000Hz）；2插值；3保持上一帧雷达摘要
+emg_3__source_age_ms,目标时刻距离前一个源样本的毫秒数
+emg_4__resampled_input_V,EMG 处理网格；原始/RMS 模式、单位和滤波版本见 source_metadata.jsonl；原始设备包在会话 EMG 日志
+emg_4__baseline_corrected_envelope_V,EMG 处理网格；原始/RMS 模式、单位和滤波版本见 source_metadata.jsonl；原始设备包在会话 EMG 日志
+emg_4__MVC_normalized_ratio,EMG 处理网格；原始/RMS 模式、单位和滤波版本见 source_metadata.jsonl；原始设备包在会话 EMG 日志
+emg_4__source_valid,EMG 处理网格；原始/RMS 模式、单位和滤波版本见 source_metadata.jsonl；原始设备包在会话 EMG 日志
+emg_4__quality,0缺失；1时间戳恰好匹配（不代表原始1000Hz）；2插值；3保持上一帧雷达摘要
+emg_4__source_age_ms,目标时刻距离前一个源样本的毫秒数
+emg_5__resampled_input_V,EMG 处理网格；原始/RMS 模式、单位和滤波版本见 source_metadata.jsonl；原始设备包在会话 EMG 日志
+emg_5__baseline_corrected_envelope_V,EMG 处理网格；原始/RMS 模式、单位和滤波版本见 source_metadata.jsonl；原始设备包在会话 EMG 日志
+emg_5__MVC_normalized_ratio,EMG 处理网格；原始/RMS 模式、单位和滤波版本见 source_metadata.jsonl；原始设备包在会话 EMG 日志
+emg_5__source_valid,EMG 处理网格；原始/RMS 模式、单位和滤波版本见 source_metadata.jsonl；原始设备包在会话 EMG 日志
+emg_5__quality,0缺失；1时间戳恰好匹配（不代表原始1000Hz）；2插值；3保持上一帧雷达摘要
+emg_5__source_age_ms,目标时刻距离前一个源样本的毫秒数
+emg_6__resampled_input_V,EMG 处理网格；原始/RMS 模式、单位和滤波版本见 source_metadata.jsonl；原始设备包在会话 EMG 日志
+emg_6__baseline_corrected_envelope_V,EMG 处理网格；原始/RMS 模式、单位和滤波版本见 source_metadata.jsonl；原始设备包在会话 EMG 日志
+emg_6__MVC_normalized_ratio,EMG 处理网格；原始/RMS 模式、单位和滤波版本见 source_metadata.jsonl；原始设备包在会话 EMG 日志
+emg_6__source_valid,EMG 处理网格；原始/RMS 模式、单位和滤波版本见 source_metadata.jsonl；原始设备包在会话 EMG 日志
+emg_6__quality,0缺失；1时间戳恰好匹配（不代表原始1000Hz）；2插值；3保持上一帧雷达摘要
+emg_6__source_age_ms,目标时刻距离前一个源样本的毫秒数
+lidar_L__scan_point_count,雷达扫描摘要；完整点云使用 Raw scans 独立保存，非 1000Hz 扫描
+lidar_L__nonzero_point_count,雷达扫描摘要；完整点云使用 Raw scans 独立保存，非 1000Hz 扫描
+lidar_L__bad_packet_count,雷达扫描摘要；完整点云使用 Raw scans 独立保存，非 1000Hz 扫描
+lidar_L__reported_scan_rate_Hz,雷达扫描摘要；完整点云使用 Raw scans 独立保存，非 1000Hz 扫描
+lidar_L__quality,0缺失；1时间戳恰好匹配（不代表原始1000Hz）；2插值；3保持上一帧雷达摘要
+lidar_L__source_age_ms,目标时刻距离前一个源样本的毫秒数
+lidar_R__scan_point_count,雷达扫描摘要；完整点云使用 Raw scans 独立保存，非 1000Hz 扫描
+lidar_R__nonzero_point_count,雷达扫描摘要；完整点云使用 Raw scans 独立保存，非 1000Hz 扫描
+lidar_R__bad_packet_count,雷达扫描摘要；完整点云使用 Raw scans 独立保存，非 1000Hz 扫描
+lidar_R__reported_scan_rate_Hz,雷达扫描摘要；完整点云使用 Raw scans 独立保存，非 1000Hz 扫描
+lidar_R__quality,0缺失；1时间戳恰好匹配（不代表原始1000Hz）；2插值；3保持上一帧雷达摘要
+lidar_R__source_age_ms,目标时刻距离前一个源样本的毫秒数

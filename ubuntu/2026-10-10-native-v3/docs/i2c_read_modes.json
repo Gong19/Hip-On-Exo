@@ -1,0 +1,72 @@
+[
+  {
+    "bus": 1,
+    "mode": "smbus_split",
+    "paired_reads_hz": 193.35994783798606,
+    "errors": 0,
+    "mean_ms": 5.159924814113597
+  },
+  {
+    "bus": 1,
+    "mode": "rdwr_split",
+    "paired_reads_hz": 190.31721042106474,
+    "errors": 0,
+    "mean_ms": 5.244234572679514
+  },
+  {
+    "bus": 1,
+    "mode": "rdwr_pair",
+    "paired_reads_hz": 192.0270477593692,
+    "errors": 0,
+    "mean_ms": 5.19729391854419
+  },
+  {
+    "bus": 1,
+    "mode": "smbus_contiguous",
+    "paired_reads_hz": 183.56526380795705,
+    "errors": 0,
+    "mean_ms": 5.434905219600729
+  },
+  {
+    "bus": 1,
+    "mode": "rdwr_contiguous",
+    "paired_reads_hz": 181.49070821890533,
+    "errors": 0,
+    "mean_ms": 5.49920238348624
+  },
+  {
+    "bus": 7,
+    "mode": "smbus_split",
+    "paired_reads_hz": 578.3478508699528,
+    "errors": 0,
+    "mean_ms": 1.7234322321428523
+  },
+  {
+    "bus": 7,
+    "mode": "rdwr_split",
+    "paired_reads_hz": 558.0366142902286,
+    "errors": 0,
+    "mean_ms": 1.7869827802985052
+  },
+  {
+    "bus": 7,
+    "mode": "rdwr_pair",
+    "paired_reads_hz": 564.5214820928902,
+    "errors": 0,
+    "mean_ms": 1.7661138719008265
+  },
+  {
+    "bus": 7,
+    "mode": "smbus_contiguous",
+    "paired_reads_hz": 595.7966291907345,
+    "errors": 0,
+    "mean_ms": 1.6728741437360155
+  },
+  {
+    "bus": 7,
+    "mode": "rdwr_contiguous",
+    "paired_reads_hz": 579.2921190153222,
+    "errors": 0,
+    "mean_ms": 1.7210996185270468
+  }
+]

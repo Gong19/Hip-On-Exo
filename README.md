@@ -38,3 +38,7 @@ The programme for Hip-On Exoskeleton
 ## Ubuntu：真实桌面实时波形10分钟测试
 
 [可见界面、实时曲线、内存与采集完整性验收](ubuntu/2026-10-10-native-v3/docs/VISIBLE_10MIN.md)。使用X11桌面显示，波形页轮换；截图和真实信号仅留本机。
+
+## Ubuntu V3.4 轻量趋势显示
+
+[160点趋势图、IMU分组及3分钟可见窗口验收](ubuntu/2026-10-10-native-v3/docs/TREND_UI.md)。原生采集与记录精度不变。

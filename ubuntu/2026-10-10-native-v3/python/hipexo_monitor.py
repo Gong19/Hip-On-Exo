@@ -17,6 +17,7 @@ import os, sys, csv, json, math, re, statistics, time, traceback
 from datetime import datetime
 from threading import Thread, Event, Lock
 from collections import deque, defaultdict
+from hipexo_trend import trend_points
 
 # ── Qt / pyqtgraph ───────────────────────────────────────────────────────────
 from PyQt5 import QtWidgets, QtCore, QtGui
@@ -295,8 +296,7 @@ MEMORY_WARN_MB      = 200    # RSS warning threshold
 MEMORY_CRIT_MB      = 350    # RSS critical → force flush
 
 # ── UI timing ────────────────────────────────────────────────────────────────
-UI_REFRESH_HZ   = 20        # plot/label redraw rate (was 50 Hz — halves redraw cost, still smooth
-                              # for a monitoring display; see WORKING_LOG.md 2026-08-17)
+UI_REFRESH_HZ   = 8        # Trend display only; native capture and recording rates are unchanged.
 CTRL_PERIOD_S   = 0.0002   # legacy lower bound; V2 caps each port at MOTOR_LOG_HZ, actual rate link-limited
 
 # V2 requests up to 1000 validated feedback samples/s independently per port.
@@ -643,7 +643,7 @@ class DataManager(QtCore.QObject):
                 bundle = RecordingBundle(self._export_dir,self.session.metadata,self.session.session_id)
                 path = str(bundle.csv_path)
             if PIPELINE_ENABLED and bundle:
-                acquisition = dict(schema='hipexo-acquisition/2',software_release='native-v3.3-1000hz-20261011',
+                acquisition = dict(schema='hipexo-acquisition/2',software_release='native-v3.4-trend-ui-20261011',
                     capture_architecture='isolated ADC, per-bus IMU and native zero-output motor processes; active motor control uses SDK port threads; 20ms bounded batches',
                     tuning_requested=os.environ.get('HIPEXO_DISABLE_TUNING')!='1',tuning_note='Scoped controller awake + FIFO10; board-checked I2C-1 source clock 136 to 204 MHz while capturing, then restored; no CPU/GPU overclock',i2c_clock_tuning_requested=os.environ.get('HIPEXO_I2C_CLOCK_TUNING','1')!='0',imu_devices=IMU_DEVICES,
                     imu_poll_targets_hz={'i2c_7':200,'i2c_1':200},imu_config_note='RRATE 200Hz verified on 2026-10-10; hardware register output rate is not measured host/native update rate',
@@ -1849,7 +1849,7 @@ class MotorPanel(QtWidgets.QWidget):
             pw = pg.PlotWidget()
             pw.setTitle(title, color=color, size="10pt", bold=True)
             pw.setLabel("bottom", "samples", size="8pt")
-            curve = pw.plot(pen=pg.mkPen(color=color, width=2))
+            curve = pw.plot(pen=pg.mkPen(color=color, width=1), connect="finite")
             vl = pg.InfiniteLine(angle=90, movable=False,
                                   pen=pg.mkPen((120,120,120), width=1))
             pw.addItem(vl)
@@ -2074,7 +2074,7 @@ class MotorPanel(QtWidgets.QWidget):
         if self.window().isVisible() and not self.isVisible():return
         for i, (curve, buf) in enumerate(zip(self._curves, self._bufs)):
             if buf:
-                y = list(buf); curve.setData(range(len(y)), y)
+                y = list(buf); x, y = trend_points(range(len(y)), y); curve.setData(x, y, connect="finite")
 
         q0, dq0, t0, e0 = self._last[0]
         q1, dq1, t1, e1 = self._last[1]
@@ -2192,6 +2192,10 @@ class ImuPanel(QtWidgets.QWidget):
         self.lbl_reference.setWordWrap(True)
         layout.addWidget(self.lbl_reference)
 
+        self._trend_group = QtWidgets.QComboBox()
+        self._trend_group.addItems(['姿态趋势', '加速度趋势', '角速度趋势', '全部九项'])
+        self._trend_group.setToolTip('仅改变显示：每条曲线最多160点，保留区间极值和断线缺口；采集及文件保持原精度')
+        reference_row.insertWidget(0, self._trend_group)
         # ── 3×3 plot grid ──────────────────────────────────────────────
         plot_frame = QtWidgets.QFrame(); plot_frame.setProperty("card","true")
         grid = QtWidgets.QGridLayout(plot_frame); grid.setSpacing(4)
@@ -2213,7 +2217,7 @@ class ImuPanel(QtWidgets.QWidget):
             pw.showGrid(x=True, y=True, alpha=0.2)
             sensor_curves = []
             for si in range(self._n_sensors):
-                c = pw.plot(pen=pg.mkPen(_IMU_COLORS[si % 4], width=1.2),
+                c = pw.plot(pen=pg.mkPen(_IMU_COLORS[si % 4], width=1),
                             name=f"IMU {si}" if self._n_sensors > 1 else None,
                             connect='finite')
                 sensor_curves.append(c)
@@ -2221,6 +2225,10 @@ class ImuPanel(QtWidgets.QWidget):
             self._curves.append(sensor_curves)
             grid.addWidget(pw, row, col)
 
+        self._trend_grid = grid
+        self._trend_fields = (6,7,8)
+        self._trend_group.currentIndexChanged.connect(self._select_trend_group)
+        self._select_trend_group(0)
         layout.addWidget(plot_frame)
 
         # ── Always-visible status cards, including sensors with no data ─
@@ -2338,9 +2346,16 @@ class ImuPanel(QtWidgets.QWidget):
         if not math.isnan(temp_c):
             self._last_temp[idx] = temp_c
 
-    # Display decimation: draw at most this many points per curve.
-    # 500 Hz x 10 s = 5000 raw pts; draw a decimated view for UI speed.
-    _DISPLAY_MAX_PTS = 500
+    # Display-only min/max envelope: at most 160 points, with gaps preserved.
+
+    def _select_trend_group(self, index):
+        self._trend_fields = ((6,7,8),(0,1,2),(3,4,5),tuple(range(9)))[index]
+        for fi,pw in enumerate(self._plots):
+            self._trend_grid.removeWidget(pw)
+            pw.setVisible(fi in self._trend_fields)
+            if fi in self._trend_fields:
+                self._trend_grid.addWidget(pw,fi%3,fi//3 if index==3 else 0)
+        for col in range(3):self._trend_grid.setColumnStretch(col,1 if index==3 or col==0 else 0)
 
     def _refresh_status(self):
         running = self._worker._running.is_set()
@@ -2381,7 +2396,9 @@ class ImuPanel(QtWidgets.QWidget):
         # Hidden pages retain their bounded data buffers but do not redraw.
         # Standalone unshown panels remain usable by offline inspection/tests.
         if self.window().isVisible() and not self.isVisible():return
-        self._refresh_status()
+        now=time.perf_counter()
+        if now-getattr(self,'_status_refreshed_at',-1e9)>=.5:
+            self._refresh_status();self._status_refreshed_at=now
         xmax = max(1.0, time.perf_counter()-self._t0)
         xmin = max(0.0, xmax - IMU_PLOT_WINDOW)
         # Time slicing is shared by all nine measurements for each IMU.
@@ -2389,13 +2406,13 @@ class ImuPanel(QtWidgets.QWidget):
         for si in range(self._n_sensors):
             x=list(self._t[si])
             first=next((i for i,stamp in enumerate(x) if stamp>=xmin),len(x))
-            stride=max(1,(len(x)-first)//self._DISPLAY_MAX_PTS)
+            stride=1
             slices[si]=(first,stride,x[first::stride])
-        for fi in range(len(_IMU_FIELDS)):
+        for fi in self._trend_fields:
             self._plots[fi].setXRange(xmin,xmax,padding=0)
             for si in range(self._n_sensors):
                 first,stride,x=slices[si];y=list(self._y[fi][si])
-                self._curves[fi][si].setData(x,y[first::stride])
+                dx,dy=trend_points(x,y[first::stride]);self._curves[fi][si].setData(dx,dy,connect="finite")
 
 
 # ╔══════════════════════════════════════════════════════════════════════════╗
@@ -2777,7 +2794,7 @@ class ForceSensorPanel(QtWidgets.QWidget):
             pw.setLabel("left",   "Weight (kg)", size="9pt")
             pw.setLabel("bottom", "t (s)",        size="9pt")
             pw.showGrid(x=True, y=True, alpha=0.2)
-            curve = pw.plot(pen=pg.mkPen(color=color, width=2))
+            curve = pw.plot(pen=pg.mkPen(color=color, width=1), connect="finite")
             self._plots.append(pw); self._curves.append(curve)
             pg_layout.addWidget(pw)
         # Link X axes
@@ -2908,7 +2925,7 @@ class ForceSensorPanel(QtWidgets.QWidget):
             if len(t) > 1:
                 xmax = t[-1]; xmin = max(0.0, xmax - FORCE_PLOT_WIN_S)
                 self._plots[idx].setXRange(xmin, xmax, padding=0)
-                self._curves[idx].setData(t, y)
+                dx,dy=trend_points(t,y);self._curves[idx].setData(dx,dy,connect="finite")
 
     # ── theme ─────────────────────────────────────────────────────────
     def set_theme(self, theme: str):
@@ -3943,11 +3960,39 @@ class MainWindow(QtWidgets.QWidget):
         self._toast_lbl.setAlignment(QtCore.Qt.AlignCenter)
         self._toast_timer = QtCore.QTimer(self); self._toast_timer.setSingleShot(True)
         self._toast_timer.timeout.connect(lambda: self._toast_lbl.setVisible(False))
+        self._lbl_record_health = QtWidgets.QLabel('○ 未录制 · 趋势显示')
+        self._lbl_record_health.setToolTip('根据录制状态、写入错误和CSV文件增长检查；文件增长不代表每个传感器都在线，请同时查看各路状态')
+        self._record_health_timer = QtCore.QTimer(self)
+        self._record_health_timer.timeout.connect(self._refresh_record_health)
+        self._record_health_timer.start(1000)
+        hb.addWidget(self._lbl_record_health)
         hb.addWidget(self._lbl_status)
         hb.addStretch(1)
         hb.addWidget(self._toast_lbl)
         hb.addStretch(1)
         return bar
+
+    def _refresh_record_health(self):
+        recorder=getattr(self._dm,'_recorder',None)
+        error=getattr(recorder,'error',None)
+        now=time.monotonic();path=getattr(self._dm,'_record_path','') or ''
+        if error:
+            text='● 写入错误';color='#D32F2F'
+        elif not self._dm._recording:
+            text='○ 未录制 · 趋势显示';color='#888888'
+            self._record_growth=None
+        else:
+            try:size=os.path.getsize(path)
+            except OSError:size=0
+            previous=getattr(self,'_record_growth',None)
+            if previous is None or previous[0]!=path or previous[1]!=size:
+                self._record_growth=(path,size,now)
+            age=now-self._record_growth[2]
+            text=('● 正在记录' if age<3 and size>0 else '● 等待文件增长')+f' · {size/1048576:.1f} MiB'
+            color='#2E7D32' if age<3 and size>0 else '#F57C00'
+        self._lbl_record_health.setText(text)
+        self._lbl_record_health.setStyleSheet(f'color:{color};font-weight:bold;')
+        self._lbl_record_health.setToolTip((str(error) if error else str(path))+'\n文件增长仅证明写入活动；各路在线状态请查看传感器页面。')
 
     # ── Theme ─────────────────────────────────────────────────────────────
     def _toggle_theme(self):

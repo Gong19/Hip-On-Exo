@@ -1,0 +1,123 @@
+{
+  "seconds": 180,
+  "streams": {
+    "imu_0": {
+      "hz": 199.9998247463965,
+      "samples": 36000,
+      "min_second": 200,
+      "max_second": 200,
+      "std_second": 0.0,
+      "max_gap_ms": 6.568968,
+      "p99_gap_ms": 5.32768456,
+      "gaps_over_10ms": 0
+    },
+    "imu_1": {
+      "hz": 200.00003716881716,
+      "samples": 36000,
+      "min_second": 200,
+      "max_second": 200,
+      "std_second": 0.0,
+      "max_gap_ms": 6.955379,
+      "p99_gap_ms": 5.456944239999999,
+      "gaps_over_10ms": 0
+    },
+    "imu_2": {
+      "hz": 200.0000052379234,
+      "samples": 36000,
+      "min_second": 200,
+      "max_second": 200,
+      "std_second": 0.0,
+      "max_gap_ms": 7.004628,
+      "p99_gap_ms": 5.303204199999999,
+      "gaps_over_10ms": 0
+    },
+    "imu_3": {
+      "hz": 200.0000408300314,
+      "samples": 36000,
+      "min_second": 200,
+      "max_second": 200,
+      "std_second": 0.0,
+      "max_gap_ms": 8.088822,
+      "p99_gap_ms": 5.491605719999997,
+      "gaps_over_10ms": 0
+    },
+    "force_0": {
+      "hz": 999.9998267490676,
+      "samples": 180000,
+      "min_second": 1000,
+      "max_second": 1000,
+      "std_second": 0.0,
+      "max_gap_ms": 3.008892,
+      "p99_gap_ms": 1.1506916399999996,
+      "gaps_over_10ms": 0
+    },
+    "force_1": {
+      "hz": 999.9998791937879,
+      "samples": 180000,
+      "min_second": 1000,
+      "max_second": 1000,
+      "std_second": 0.0,
+      "max_gap_ms": 3.031388,
+      "p99_gap_ms": 1.2065336399999997,
+      "gaps_over_10ms": 0
+    },
+    "motor_0": {
+      "hz": 998.8534314666276,
+      "samples": 179794,
+      "min_second": 994,
+      "max_second": 1001,
+      "std_second": 1.5460423388705262,
+      "max_gap_ms": 8.384223,
+      "p99_gap_ms": 1.7168942399999985,
+      "gaps_over_10ms": 0
+    },
+    "motor_1": {
+      "hz": 999.0812386173901,
+      "samples": 179835,
+      "min_second": 994,
+      "max_second": 1001,
+      "std_second": 1.4939693586029281,
+      "max_gap_ms": 8.341854,
+      "p99_gap_ms": 1.4258785200000033,
+      "gaps_over_10ms": 0
+    }
+  },
+  "grid_rows": 180000,
+  "grid_missing": {
+    "imu_0": 0,
+    "imu_1": 0,
+    "imu_2": 0,
+    "imu_3": 0,
+    "force_0": 0,
+    "force_1": 0,
+    "motor_0": 0,
+    "motor_1": 0
+  },
+  "display": {
+    "target_hz": 8,
+    "points_per_curve_max": 160,
+    "imu_default": "orientation (12 curves)",
+    "actual_redraw_hz": {
+      "Motor": 6.0239386587782775,
+      "IMU": 3.547429587742376,
+      "Force": 5.8965207238693464
+    },
+    "sampled_rss_peak_mib": 506.25,
+    "sampled_rss_first_last_mib": [
+      448.0390625,
+      501.92578125
+    ],
+    "minimum_mem_available_mib": 2384.57421875,
+    "all_visible": true,
+    "max_loop_ms": 651.1425870121457
+  },
+  "recording_counters": {
+    "accepted_frames": 881624,
+    "late_frames": 0,
+    "out_of_order_frames": 0,
+    "queue_overflow": 0,
+    "buffer_overflow": 0,
+    "parent_max_queued_bytes": 497024,
+    "error": null
+  }
+}

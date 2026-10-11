@@ -81,6 +81,7 @@ class ImuStatusTests(unittest.TestCase):
         self.assertTrue(self.pump(lambda:all(self.worker.is_online(i) for i in range(4))))
 
     def test_other_sensors_do_not_shift_an_old_trace(self):
+        self.panel._trend_group.setCurrentIndex(1)
         base=time.perf_counter();self.panel._t0=base
         data={field:float(i) for i,(field,_) in enumerate(m._IMU_FIELDS)}
         for sensor,stamp in [(0,1.),(1,1.1),(0,1.2),(1,1.3)]:

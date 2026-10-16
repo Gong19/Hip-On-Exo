@@ -485,7 +485,9 @@ class EmgWorker(QtCore.QObject):
                               sensor_id=self.config['sensor_ids'][i], session_id=self.session_id,
                               is_rms=int(self.processor.channels[i]['is_rms']),
                               source_sample_rate_hz=self.processor.channels[i].get('sample_rate',0),
-                              filter_description="anti-alias-v1",
+                              filter_description=self.processor.fingerprint['filter_version'],
+                              output_sample_rate_hz=1000,
+                              source_gap_limit_ms=self.processor.gap_limit_ms(i),
                               sdk_unit=self.processor.channels[i].get('sdk_unit','unverified'),
                               scale_to_v=self.processor.channels[i].get('scale_to_v'),
                               value_units=self.processor.channels[i].get('value_units','unverified'))
@@ -505,6 +507,8 @@ class EmgWorker(QtCore.QObject):
         with self._lock:
             now = time.perf_counter()
             channels = copy.deepcopy(self.processor.channels) if self.processor else []
+            if self.processor:
+                for channel, rates in zip(channels,self.processor.rate_status()):channel.update(rates)
             history = [list(b) for b in self.history]
             stale = ([t is None or now - t > .5 for t in self.processor.last_seen]
                      if self.processor else [True] * 7)
@@ -804,8 +808,12 @@ class EmgPanel(QtWidgets.QWidget):
             if mode == 2 and samples and not math.isfinite(samples[-1][3]) and state == 'LIVE':
                 state = 'MVC NOT CALIBRATED'
             battery = f'{info["battery"]:.0f}%' if info.get('battery') is not None else '?'
-            label.setText(f'{i+1} · {MUSCLES[i]} | {state} | {info["sample_rate"]:.1f} Hz | battery {battery}')
-            label.setToolTip(f'SID {info["sid"]} | {info["mode"]}')
+            measured = info.get('native_measured_hz')
+            coverage = info.get('coverage')
+            measured_text = f'{measured:.1f}' if measured is not None and not stale[i] else '--'
+            coverage_text = f'{coverage*100:.1f}%' if coverage is not None and not stale[i] else '--'
+            label.setText(f'{i+1} · {MUSCLES[i]} | {state} | 实收 {measured_text} Hz → 1000 Hz | 有效 {coverage_text}')
+            label.setToolTip(f'SID {info["sid"]} | {info["mode"]} | 原生配置 {info["sample_rate"]:.3f} Hz | battery {battery}\n1000 Hz是同步输出网格；有效覆盖率按最近输出时间窗计算，低速源插值不会增加原生信息。')
         self._view_mode = mode
 
     def set_theme(self, theme):

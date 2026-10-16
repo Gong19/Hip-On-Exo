@@ -76,3 +76,7 @@ IMU统计的是主机有效寄存器读取率，设备内部解算和重复寄�
 ## 验收和回滚
 
 见 [VALIDATION.md](docs/VALIDATION.md) 和 [TESTING.md](docs/TESTING.md)。真实波形、私有配置及SDK二进制仅留本机，GitHub只有代码、文档和SIMULATED样例。V2备份在本机 `backup-before-native-v3-20261010-220958`；回退应在关闭界面后恢复备份代码，或先禁用上述两个新功能对照。
+
+## EMG 1000 Hz 验收（2026-10-16）
+
+[实收速率、断流处理、单路真实桥接验收及Windows配置说明](docs/EMG_1000HZ_20261016.md)。统一1000 Hz时间网格与原生采样率分别标注。

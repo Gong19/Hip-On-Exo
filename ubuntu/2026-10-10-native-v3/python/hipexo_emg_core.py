@@ -31,7 +31,9 @@ class EmgProcessor:
         self.job = None
         self.last_calibration_message = ''
         self.filter_description = "6th-order Butterworth 400Hz anti-alias before downsampling when native Fs>1000; rectified branch filtered separately; 2nd-order Bessel 5Hz envelope at 1000Hz; causal phase delay not removed"
-        self.fingerprint['filter_version'] = 'anti-alias-v1'
+        self.fingerprint['filter_version'] = 'anti-alias-v2-gap-aware'
+        self._aa_sos = [signal.butter(6,400,fs=float(c['sample_rate']),output='sos')
+                        if float(c.get('sample_rate',0))>RATE else None for c in channels]
         self.reset_stream()
 
     def reset_stream(self):
@@ -48,16 +50,37 @@ class EmgProcessor:
         self.rejected = [0] * 7
         self.discontinuities = [0] * 7
         self.job = None
+        self.source_times = [deque(maxlen=16384) for _ in range(7)]
+        self.output_window = deque(maxlen=2001)
+
+    def gap_limit_ms(self, ch):
+        # A missed native sample must not turn into 50 ms of apparently valid EMG.
+        fs = float(self.channels[ch].get('sample_rate', 0))
+        return min(50., max(2., 2500. / fs)) if fs > 0 else 2.
+
+    def rate_status(self):
+        result = []
+        span = self.output_window[-1][0]-self.output_window[0][0]+1 if self.output_window else 0
+        for ch in range(7):
+            times = self.source_times[ch]
+            native = (len(times)-1)/(times[-1]-times[0]) if len(times)>1 and times[-1]>times[0] else None
+            valid = sum(row[1][ch] for row in self.output_window)
+            result.append(dict(native_measured_hz=native, output_rate_hz=RATE,
+                               valid_output_hz=valid*RATE/span if span else None,
+                               coverage=valid/span if span else None,
+                               gap_limit_ms=self.gap_limit_ms(ch)))
+        return result
 
     def _prefilter(self,ch,t,v):
         fs=float(self.channels[ch].get('sample_rate',RATE))
         rect=v.copy() if self.channels[ch]['is_rms'] else np.abs(v)
         if fs<=RATE:return v,rect
-        sos=signal.butter(6,400,fs=fs,output='sos')
+        sos=self._aa_sos[ch]
+        gap_limit=self.gap_limit_ms(ch)
         out=np.empty_like(v);envelope=np.empty_like(rect)
-        boundaries=np.r_[0,np.flatnonzero(np.diff(t)>50)+1,len(t)]
+        boundaries=np.r_[0,np.flatnonzero(np.diff(t)>gap_limit)+1,len(t)]
         state=self._aa_state[ch]
-        if self._aa_last[ch] is None or t[0]-self._aa_last[ch]>50:state=None
+        if self._aa_last[ch] is None or t[0]-self._aa_last[ch]>gap_limit:state=None
         for a,b in zip(boundaries[:-1],boundaries[1:]):
             if a:state=None
             if state is None:state=(signal.sosfilt_zi(sos)*v[a],signal.sosfilt_zi(sos)*rect[a])
@@ -98,12 +121,16 @@ class EmgProcessor:
                 t, v = t[keep], v[keep]
                 if not len(t):
                     continue
+            source_times = self.source_times[ch]
+            source_times.extend((t / RATE).tolist())
+            while len(source_times)>1 and source_times[0]<source_times[-1]-2.:
+                source_times.popleft()
             v, rect = self._prefilter(ch,t,v)
             if tail is not None:
                 t, v, rect = np.r_[tail[0],t],np.r_[tail[1],v],np.r_[tail[2],rect]
             self.last_seen[ch] = now
             # Process each continuous segment separately, including segments before a gap.
-            breaks = np.r_[0, np.flatnonzero(np.diff(t) > 50.0) + 1, len(t)]
+            breaks = np.r_[0, np.flatnonzero(np.diff(t) > self.gap_limit_ms(ch)) + 1, len(t)]
             for seg in range(len(breaks) - 1):
                 start, end = breaks[seg:seg+2]
                 st, sv = t[start:end], v[start:end]
@@ -150,6 +177,7 @@ class EmgProcessor:
             for i, pair in entry['values'].items():
                 raw[i], envelope[i] = pair
                 valid[i] = True
+            self.output_window.append((label, tuple(bool(v) for v in valid)))
             self._collect_calibration(envelope, valid, now)
             corrected = np.maximum(envelope - self.baseline, 0)
             corrected[~valid] = 0

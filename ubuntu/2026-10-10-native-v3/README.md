@@ -1,4 +1,8 @@
-# HiPExo native acquisition V3.4 — 2026-10-11
+# HiPExo native acquisition V3.5 — 2026-10-11
+
+## 当前EMG架构：Windows本地采集，Ubuntu仅控制
+
+本版取代下文历史EMG数据传输及Ubuntu重采样流程。Ubuntu不接收EMG样本，使用8766控制协议显示状态并联动启停。见[Ubuntu安装回执](docs/CONTROL_ONLY_UBUNTU_20261016.md)与[Windows交接说明](../../handoffs/2026-10-16-emg-control-only/README.md)。新版真实双机联采尚待控制端口连通后验证。
 
 本版解决慢 I²C 总线上两只 IMU 的 200 Hz 读取，并新增独立的 C++ 电机零输出监测进程。1000 Hz 同步网格、60 ms × 5 的300 ms周期、有界队列和图像单独保存继续沿用V2。
 

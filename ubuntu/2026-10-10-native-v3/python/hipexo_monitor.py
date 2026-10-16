@@ -24,7 +24,7 @@ from PyQt5 import QtWidgets, QtCore, QtGui
 from PyQt5.QtGui import QKeySequence, QIcon, QFont
 import pyqtgraph as pg
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from hipexo_emg import EmgWorker, EmgPanel
+from hipexo_emg_control import EmgWorker, EmgPanel
 from hipexo_recording import FrameRecorder
 from hipexo_session import SessionManifest, camera_frame_timing
 from hipexo_recording_layout import RecordingBundle, batch_summary, sensors_in
@@ -643,14 +643,14 @@ class DataManager(QtCore.QObject):
                 bundle = RecordingBundle(self._export_dir,self.session.metadata,self.session.session_id)
                 path = str(bundle.csv_path)
             if PIPELINE_ENABLED and bundle:
-                acquisition = dict(schema='hipexo-acquisition/2',software_release='native-v3.4-trend-ui-20261011',
+                acquisition = dict(schema='hipexo-acquisition/2',software_release='native-v3.5-emg-control-only-20261016',
                     capture_architecture='isolated ADC, per-bus IMU and native zero-output motor processes; active motor control uses SDK port threads; 20ms bounded batches',
                     tuning_requested=os.environ.get('HIPEXO_DISABLE_TUNING')!='1',tuning_note='Scoped controller awake + FIFO10; board-checked I2C-1 source clock 136 to 204 MHz while capturing, then restored; no CPU/GPU overclock',i2c_clock_tuning_requested=os.environ.get('HIPEXO_I2C_CLOCK_TUNING','1')!='0',imu_devices=IMU_DEVICES,
                     imu_poll_targets_hz={'i2c_7':200,'i2c_1':200},imu_config_note='RRATE 200Hz verified on 2026-10-10; hardware register output rate is not measured host/native update rate',
                     force_channels=FORCE_CHANNELS,force_target_hz=FORCE_SAMPLE_HZ,force_spi_hz=FORCE_SPI_SPEED,force_adc='ADS8688',force_adc_reference_v=4.096,force_conversion_version='ADS8688-datasheet-v1',
                     motor_native_target_hz=__import__('hipexo_motor_process').configured_target_hz(),motor_log_target_hz=MOTOR_LOG_HZ,motor_gear_ratio=MOTOR_GEAR_RATIO,motor_native_monitor_requested=os.environ.get('HIPEXO_MOTOR_NATIVE','1')!='0',motor_timestamp_note='Native monitor uses host validated-frame time; asynchronous replies are not paired to requests; round-trip field is NaN; inspect motor_*_transport_quality.json',
                     camera_mode='images' if VISION_IMAGE_ONLY else 'inference',camera_target_fps=VISION_CAPTURE_FPS,
-                    timestamp_semantics='Local host read completion; EMG mapped source time; not hardware synchronized')
+                    timestamp_semantics='Local host read completion; EMG stored on Windows only, separate control timestamps; not hardware synchronized')
                 (bundle.directory/'acquisition_config.json').write_text(json.dumps(acquisition,ensure_ascii=False,indent=2),encoding='utf-8')
             recorder = (CycleRecorder(path, self.sig_record_error.emit, self.sig_cycle_ready.emit if self.receivers(self.sig_cycle_ready) else None)
                         if PIPELINE_ENABLED and bundle else FrameRecorder(path, self.sig_record_error.emit))
@@ -1361,14 +1361,30 @@ def _traj_eval(traj_cfg: dict, t: float):
 
 
 def _ensure_motor_mode_for_ports(ports, swmotor_path):
-    if not os.path.exists(swmotor_path):
+    """Prepare each adapter without shell parsing or concurrent port access."""
+    import subprocess
+    import fcntl
+    from contextlib import ExitStack
+    if not os.path.isfile(swmotor_path):
         raise FileNotFoundError(f"swmotor not found: {swmotor_path}")
-    for p in sorted(set(ports)):
-        os.system(f"sudo chmod 777 {swmotor_path} {p}")
-        ret = os.system(f"sudo {swmotor_path} {p}")
-        if ret != 0:
-            raise RuntimeError(f"swmotor failed for {p}, ret={ret}")
-    time.sleep(1.0)
+    with ExitStack() as stack:
+        unique_ports = sorted(set(ports))
+        for port in unique_ports:
+            lease = stack.enter_context(open('/tmp/hipexo-motor-'+os.path.basename(port)+'.lock', 'a'))
+            try:
+                fcntl.flock(lease, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except BlockingIOError as exc:
+                raise RuntimeError(f"Motor port already in use: {port}") from exc
+        for port in unique_ports:
+            try:
+                result = subprocess.run(['sudo', '-n', swmotor_path, port],
+                                        capture_output=True, text=True, timeout=8)
+            except subprocess.TimeoutExpired as exc:
+                raise RuntimeError(f"swmotor timeout after 8 seconds: {port}") from exc
+            if result.returncode:
+                detail = (result.stderr or result.stdout).strip()[-500:]
+                raise RuntimeError(f"swmotor failed for {port}: {detail or result.returncode}")
+        time.sleep(1.0)
 
 
 class MotorWorker(QtCore.QObject):
@@ -3794,7 +3810,7 @@ class MainWindow(QtWidgets.QWidget):
         self._emg_worker = EmgWorker(self._dm, self)
         self._emg_worker.simulation_only = _PREVIEW
         if _PREVIEW:
-            self._emg_worker.config["source"] = "simulation"
+            self._emg_worker.config["source"] = "windows"
         self._lidar_worker_l = LidarWorker("L", LIDAR_PORT_L, self._dm, self)
         self._lidar_worker_r = LidarWorker("R", LIDAR_PORT_R, self._dm, self)
 
@@ -3926,7 +3942,7 @@ class MainWindow(QtWidgets.QWidget):
         self._btn_collect.setProperty("accent", "true")
         self._btn_collect.clicked.connect(self._toggle_collection)
         self._btn_rec   = QtWidgets.QPushButton("⏺  Record")
-        self._btn_rec.setToolTip("Records processed/summary CSV. For raw LiDAR use Raw scans; for camera frames use Capture Sample. Remote EMG raw JSONL is saved automatically during Sync & Start.")
+        self._btn_rec.setToolTip("Records processed/summary CSV. For raw LiDAR use Raw scans; for camera frames use Capture Sample. EMG is saved on Windows only; enable EMG linkage to send Record start/stop commands.")
         self._btn_rec.setProperty("accent","true")
         self._btn_export = QtWidgets.QPushButton("💾  Export CSV")
         self._btn_theme  = QtWidgets.QPushButton("🌙  Dark")
@@ -4009,7 +4025,8 @@ class MainWindow(QtWidgets.QWidget):
     # ── Recording / Export ────────────────────────────────────────────────
     def _toggle_collection(self):
         if not self._collecting:
-            self._emg_worker.start()
+            if self._emg_worker.enabled:
+                self._emg_worker.connect_source()
             self._imu_worker.start()
             self._force_worker.start()
             self._motor_worker.start_monitoring()
@@ -4024,7 +4041,8 @@ class MainWindow(QtWidgets.QWidget):
             self._set_panel_state("Motor", "State: MONITORING")
             self._toast("Acquisition requested; Motor uses zero-output feedback", True)
         else:
-            self._emg_worker.stop()
+            if self._emg_worker.enabled:
+                self._emg_worker.stop()
             self._imu_worker.stop()
             self._force_worker.stop()
             self._motor_worker.stop_monitoring()
@@ -4051,11 +4069,14 @@ class MainWindow(QtWidgets.QWidget):
             if not self._dm.start_recording():
                 return
             self._recording = True
+            self._emg_worker.record_start(self._dm._record_path)
             self._btn_rec.setText("⏹  Stop Rec")
             self._btn_rec.setStyleSheet("background:#D32F2F; color:white; border-radius:8px;")
             self._btn_rec.setToolTip(f"本次记录：{self._dm._record_path}\n停止后按实际有效数据命名。")
             self._toast(f"Recording 1000 Hz grid · 5×60 ms: {self._current_subject} @ {self._current_location}" if PIPELINE_ENABLED else "Recording legacy CSV", True)
         else:
+            if self._emg_worker.enabled:
+                self._emg_worker.stop()
             recording_ok = self._dm.stop_recording()
             self._recording = False
             self._btn_rec.setText("⏺  Record")
@@ -4256,7 +4277,7 @@ class MainWindow(QtWidgets.QWidget):
     def closeEvent(self, ev):
         # Stop producers first; then drain all already accepted recording rows.
         if not self._emg_worker.shutdown():
-            self._toast("EMG is still stopping; close again after the SDK returns", False, 5000)
+            self._toast("EMG is still stopping; close again after the control connection exits", False, 5000)
             ev.ignore()
             return
         try: self._motor_worker.shutdown()
@@ -4306,7 +4327,7 @@ def main():
     win = MainWindow()
     if _PREVIEW:
         win.setWindowTitle("HiPExo Monitor — offline preview")
-        win._lbl_status.setText("OFFLINE PREVIEW — EMG simulated; physical devices disabled")
+        win._lbl_status.setText("OFFLINE PREVIEW — EMG control only, no network; physical devices disabled")
         win._switch_panel("EMG")
         win._emg_worker.start()
     # showFullScreen() already called inside __init__; ensure it takes effect

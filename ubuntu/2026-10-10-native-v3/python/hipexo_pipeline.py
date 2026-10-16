@@ -28,7 +28,7 @@ FIELDS={
  'emg':[('raw_v','resampled_input_V'),('envelope_v','baseline_corrected_envelope_V'),('mvc_ratio','MVC_normalized_ratio'),('valid','source_valid')],
  'lidar':[('n_scan_points','scan_point_count'),('nonzero_points','nonzero_point_count'),('bad_packets','bad_packet_count'),('reported_hz','reported_scan_rate_Hz')]
 }
-STREAMS=[f'imu_{i}' for i in range(4)]+[f'motor_{i}' for i in range(2)]+[f'force_{i}' for i in range(2)]+[f'emg_{i}' for i in range(7)]+['lidar_L','lidar_R']
+STREAMS=[f'imu_{i}' for i in range(4)]+[f'motor_{i}' for i in range(2)]+[f'force_{i}' for i in range(2)]+['lidar_L','lidar_R']  # EMG control-only: no sample arrays or CSV columns
 DISCRETE={'adc_raw_count','repeated_register_block','read_duration_ms','reference_id','reference_valid','valid','merror','temp'}
 META_KEYS={'timestamp_basis','motor_transport','adc_reference_v','adc_range_code','conversion_version','sensor_id','session_id','is_rms','simulated','remote_simulated','baseline_v','mvc_v','sdk_unit','scale_to_v','value_units','i2c_bus','i2c_address','reference_id','source_sample_rate_hz','output_sample_rate_hz','source_gap_limit_ms','filter_description','sync_offset_ns','sync_rtt_ns','sync_id','remote_run_id','clock_quality'}
 MAX_GAP_MS={'imu':40,'motor':40,'force':40,'emg':1.001,'lidar':250}
@@ -119,7 +119,7 @@ class CycleRecorder:
             notes=['cycles.jsonl indexes complete combined CSV byte ranges; live callbacks contain full rows.',
                    'Image paths may be indexed before asynchronous encoding finishes; Stop drains image jobs.',
                    'IMU acceleration includes gravity. Camera images are indexed separately, never interpolated.',
-                   'EMG input is already processed onto 1kHz. Vendor RMS and raw EMG are distinct; see source metadata.',
+                   'EMG is acquired and saved only on Windows. This table has no EMG sample columns.',
                    'Local sensor timestamps are host read times, not hardware trigger synchronization.',
                    'Latency buffer is finite. Late native data retained; already emitted cycles not silently revised.',
                    'Final cycle padded to 300 rows with within_recording=0 beyond Stop. Null means unavailable.',

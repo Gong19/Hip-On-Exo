@@ -1,0 +1,19 @@
+{
+  "README.md": "76f5b89d875157a02e3399285fc8e84d21944685bdcd77c70b6ef3a612c753a4",
+  "README_timing.md": "76f5b89d875157a02e3399285fc8e84d21944685bdcd77c70b6ef3a612c753a4",
+  "timing_evidence.py": "2b5131d44420d9c554534479599d967524337bb78bdfdd359ba2d2025162e199",
+  "windows_control.py": "0381d39d22eb46ae79ac62350d9070e0863103aaaaf18a21f25ae93b0f45900a",
+  "control_protocol.py": "214c8f504315288e912df7808e1f1e0111b26ddedf3765d4ebeec568c23714f0",
+  "hipexo_emg_control.py": "74bfc9efe2316f83743dac49042b1d0c78e40f3b33c7f622ec3bd05060fb5357",
+  "apply_ubuntu_timing_update.py": "1e46deb9b167928b2ade397e318bddca2d279e5e638c92e9e9ca342bb0ecd479",
+  "timing_upstream_sha256.json": "f917fbc6e3fda86c0f7dc71c3ebe825ed85a2e28d80c720f9e39c51fc5609f73",
+  "start_waveform_sync.py": "4a13c0e8fbf372bec6dbaf324861eb642a0e6d447145c01a2a8b12817c005c8d",
+  "Start_EMG_Waveform_Sync.cmd": "8b48cf702be83303f471f5aa02639ddd80383131cfb3bd2ba9f13755b4012b73",
+  "test_control_only.py": "73a8e801e595990817a1cc8614400e7287975109998f5adfd21bdf638cd36ad6",
+  "test_control_ubuntu.py": "a9e94d7a241063373ee3227daf5846a5d4756fdc46b1e6ed56135da6cdb409fe",
+  "test_timing_evidence.py": "2a0eeffaf2ecf419f13603b14bc939301702c065bddc2ff9b890651b39fde6bf",
+  "validate_original_simulation.py": "c8e814ad44eee3ebbb902e06ebe8847f5a0865501ac50c7af7d942897000513d",
+  "timing_validation_summary.json": "131962aa0ec83b6f9890ba530ee44f096670a8e87db3386e57ec4ea655f91dd3",
+  "apply_ubuntu_control_only.py": "7d30cc1b2ac9f3f0826288b5cafd3524fc60944676b83f18fba5604b1b1c565e",
+  "upstream_sha256.json": "caee71ef5297082fe38029d6534ce429fc5bd5a778016470768048b4e9911140"
+}

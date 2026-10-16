@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "simulated": true,
+  "hardware_test_performed": false,
+  "unit_integration_tests": 13,
+  "original_GUI": true,
+  "csv_lines": 3199,
+  "csv_bytes": 511189,
+  "no_sample_transport": true,
+  "disconnect_continues": true,
+  "checked_events": [
+    "gate_released",
+    "first_saving_frame",
+    "first_csv_write_returned",
+    "sdk_stop_returned",
+    "file_save_stop_returned",
+    "start_client_receipt",
+    "stop_client_receipt"
+  ],
+  "ubuntu_installer": "reviewed hashes, dry-run, byte-exact backups, changed-base refusal passed",
+  "warning": "Simulation timings are not eduroam or physical sensor latency measurements"
+}

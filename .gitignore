@@ -224,3 +224,9 @@ emg_config.local.json
 **/validation/real-*/
 *.jsonl
 *.csv
+
+# Control-only local credentials and recordings
+**/emg_control_private.json*
+**/emg_control_private.tmp
+**/records/
+**/backup-before-emg-control-*/

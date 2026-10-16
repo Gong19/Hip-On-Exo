@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-16",
+  "protocol": "hipexo-emg-control/1",
+  "port": 8766,
+  "software_tests_passed": 5,
+  "original_waveform_simulation": {
+    "passed": true,
+    "simulated": true,
+    "csv_data_rows": 3207,
+    "csv_total_lines": 3213,
+    "csv_bytes": 513407,
+    "disconnect_continues": true,
+    "reconnect_and_stop": true,
+    "final_save_ok": true,
+    "sample_timebase_retained": true,
+    "physical_sample_sync_verified": false
+  },
+  "ubuntu_emg_sample_transport": false,
+  "ubuntu_emg_processor_constructed": false,
+  "ubuntu_emg_csv_columns_removed": 42,
+  "original_windows_source_unchanged": true,
+  "old_standalone_launcher_unchanged": true,
+  "python_compile_check": "passed",
+  "real_hardware_test_performed": false,
+  "jetson_deployed": false,
+  "github_publication": "explicit_source_publication_authorization_received; see publication receipt for final outcome"
+}

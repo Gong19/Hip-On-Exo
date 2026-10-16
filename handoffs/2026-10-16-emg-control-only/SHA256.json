@@ -1,0 +1,14 @@
+{
+  "apply_ubuntu_control_only.py": "7d30cc1b2ac9f3f0826288b5cafd3524fc60944676b83f18fba5604b1b1c565e",
+  "control_protocol.py": "c6b72104e662729a15bf0cd5e2d9a9124c8234744092e500a5bcfdf4dbbd4f4c",
+  "hipexo_emg_control.py": "58adc5cf53b2527a5bfc8c24a5b933074fa2ecbb49c7cdc3244dd0daa0fb2004",
+  "README.md": "548d5af554c49a70ad9d3452a781a10a960da6c1edc2453637ec135add4e33fc",
+  "Start_EMG_Waveform_Sync.cmd": "8b48cf702be83303f471f5aa02639ddd80383131cfb3bd2ba9f13755b4012b73",
+  "start_waveform_sync.py": "4a13c0e8fbf372bec6dbaf324861eb642a0e6d447145c01a2a8b12817c005c8d",
+  "test_control_only.py": "cfe455108dcbf5fcef9e7f1ac3257b4136c5db08dcb3ebed3cb2164101b36060",
+  "upstream_sha256.json": "caee71ef5297082fe38029d6534ce429fc5bd5a778016470768048b4e9911140",
+  "validate_original_simulation.py": "5344976fde1825e3356b63d1ea9620b5298a6a23bc0e7c9c1b2f23dcb8f31fcf",
+  "validation_summary.json": "0c6f9159f84d575019b88e1161bc7e8648fb52fd33b571c8b640e667bb8d5b30",
+  "windows_control.py": "d610caa6a4192fa61a921ffb6483a4806d59159d381ec0411ac5a79ffa988dc3",
+  "Working_Log_本轮中文.txt": "94f0437a2a3736d6b3291c05cad7e7f101af1bf0e41487ba407f5cd43fa56d2b"
+}

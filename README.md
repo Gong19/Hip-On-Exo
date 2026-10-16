@@ -42,3 +42,7 @@ The programme for Hip-On Exoskeleton
 ## Ubuntu V3.4 轻量趋势显示
 
 [160点趋势图、IMU分组及3分钟可见窗口验收](ubuntu/2026-10-10-native-v3/docs/TREND_UI.md)。原生采集与记录精度不变。
+
+## EMG 改为 Windows 本地采集、Jetson 仅同步
+
+[2026-10-16：保留 Windows 原波形界面，Jetson 仅连接状态与开始/停止指令](handoffs/2026-10-16-emg-control-only/README.md)。含备份优先的 Ubuntu 安装器；已完成本机模拟验证，尚未部署 Jetson 或完成新版真实双机验收。
